@@ -1,0 +1,76 @@
+\section{Stima puntuale}
+
+Come accenna il Casella-Berger nell'intrudizione del capitolo relativo, il concetto di stimatore è inizialmente molto vago tanto da fornire come definizione iniziale:
+
+\begin{definition}
+Uno \textbf{stimatore} di un campione casuale è una qualsiasi $statistica$ di esso. 
+\end{definition}
+
+Si precisa un'imprtante differenza tra $stima$ e $stimatore$: 
+\begin{center}
+    Una \textbf{stima} è la realizzazione di uno \textbf{stimatore}.
+\end{center}
+
+\vspace{15px}
+
+Determinare degli stimatori non è sempre pratica facile, anche se in alcuni casi la sola intuizione può risultare sufficiente per compiere un lavoro dignitoso. Si presentano di seguito due metodologie classiche e con risultati differenti per lo studio di stimatori.
+
+\subsubsection{Metodi per determinare stimatori}
+\begin{itemize}
+    \item Il più antico, classico, dal risultato assicurato ma ricco di limitazioni è il \textbf{metodo dei momenti}:
+
+Sia $(X_1,...,X_n)$ un c.c. estratto da una popazione con densità $f(\cdot;\theta_1,...,\theta_k)$. Il medoto consiste nel uguagliare i momenti della popolazione:\[\mu_r=\E X^r\] con i momenti campionari: \[M_r=\frac{1}{n}\sum_{i=0}^nX_i^r\] per $r\in\mathbb{N}^*$. 
+
+Risolvendo il sistema risultante, ottenendo dunque un vettore $(\hat{\theta}_1,...,\hat{\theta}_k)$ di $k$ elementi in funzione di $(\theta_1,...,\theta_k)$, si stabiliscono gli stimatori.
+
+\vspace{10px}
+
+Si suggerisce come esercizio di determinare, tramite il metodo dei momenti, gli stimatori di:
+\begin{itemize}
+    \item un c.c. di taglia $n$ estratto da una popolazione normale $X\sim N(\mu,\sigma^2)$
+    \item un c.c. di taglia $n$ estratto da una popolazione uniforme in  \newline $(\mu-\sigma\sqrt{3},\mu+\sigma\sqrt{3})$
+\end{itemize} 
+Ottenendo il medesimo risultato di $\hat{\mu}=\overline{X}_n$ e $\hat{\sigma}=(M_2-\overline{X}_n^2)^{\frac{1}{2}}$.
+    \item Il secondo metodo che analizziamo è il \textbf{metodo della massima verosimiglianza}:
+    
+Per introdurre questo metodo ci serviamo della funzione di verosimiglianza.
+\begin{definition}
+Sia $\underline{X}$ un c.c. di taglia $n$ e funzione di densità congiunta $f_{\underline{X}}(\overline{x},\theta)$, la \textbf{funzione di verosimiglianza} è la funzione di densità congiunta avente come parametri $\theta$: \[L(\theta)=\prod_{i=1}^nf_X(x_i;\theta)\] 
+\end{definition}
+Dunque si fissa $(x_1,...,x_n)$ e si valuta la variazione di $f_{\underline{X}}(x_1,...,x_n;\theta)$.
+
+Osserviamo inoltre, per comprendere lo stimatore di massima verosimiglianza, che $L(\theta_1)\geq L(\theta_2)$ implica che, rispetto ad uno specifico $(x_1,...,x_n)$, in $\theta_1$ si ha più $verosimiglianza$ (probabilità) che in $\theta_2$.
+
+\begin{definition}
+Sia $L(\theta)$ una funzione di verosimiglianza relativa al c.c. $(x_1,...,x_n)$. Sia $\hat{\theta}=\hat{\theta}(x_1,...,x_n)\in\Theta$ che $massimizza$  $L(\theta)$, dunque $\hat{\theta}_{ML}=\hat{\theta}(x_1,...,x_n)$ è detto \textbf{stimatore di massima verosimiglianza} per $\theta$.
+
+Con la ovvia estensione nel caso di dimensioni maggiori.
+\end{definition}
+
+Come esempio fondamentale si può considerare la seguente situazione e calcolarne lo stimatore con il metodo di massima verosimiglianza:
+
+Ci sono palline nere e palline bianche e ne vengono estratte $n$, si può rappresentare la situazione con $\{Be(p), p\in[0,1]\}$ e derivando la funzione di verosimiglianza per trovare i punti critici.
+\end{itemize}
+
+
+\vspace{15px}
+
+Si introducono ora due importanti caratterizzazioni degli stimatori, che \newline valutano la "qualità" di essi.
+
+\begin{definition}
+Sia $T=g(X_1,...,X_n)$ uno stimatore del parametro $\theta$:
+\begin{itemize}
+    \item $T$ è \textbf{corretto} se: $\E T=\theta$
+    \item Si dice \textbf{distorsione} la quantità: $b(T)=\E T-\theta$
+    \item Si dice \textbf{errore quadratico medio} la quantità: $MSE(T)=\E (t-\theta)^2$
+\end{itemize}
+\end{definition}
+
+\vspace{5px}
+
+Si osserva subito che: \[MSE(T)=\E(T-\theta)^2=\E(T-\E T +\E T-\theta)^2=\]
+\[\E(T-\E T)^2+2\E\big((T-\E T)(\E T-\theta)\big)+\E(\E T-\theta)^2=\V T +b(T)^2\]
+
+Avendo come obiettivo ottenere una $MSE(T)$ prossimo a zero e sapendo che varianza e distorsione sono $non$ negativi si cercano degli stimatori con queste quantità basse.
+
+Un classico esempio di stimatore privo di distorsione, corretto, è la varianza campionaria (corretta), il cui studio del momento primo è stato affrontato nel teorema \ref{teor_20}.

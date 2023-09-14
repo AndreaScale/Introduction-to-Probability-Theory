@@ -1,0 +1,133 @@
+\section{Convergenze e Limite centrale}
+
+Si illustrano in questo conclusivo capitolo sui fondamenti della teoria della probabilità alcune basilari tipologie di convergenze, concludendo con l'enunciato e la dimostrazione del teorema del limite centrale.
+
+\vspace{10px}
+
+\subsection{Convergenze}
+
+Si presentano ora i tre fondamentali tipi di convergenze di una successione di variabili aleatorie, utili nella nostra trattazione a presentare il teorema del limite centrale.
+
+\vspace{15px}
+\newline
+\noindent
+Sia $(X_n)_{n\in\mathbb{N}}$ una successione di v.a. a valori reali, si dice che:
+
+\begin{definition}
+$(X_n)_{n\in\mathbb{N}}$ \textbf{converge in probabilità} alla v.a. X se:
+\begin{center}
+$\forall \eta > 0$ \hspace{4px} $\mathbb{P}(X_n-X>\eta)\xrightarrow{n\to+\infty}0$    
+\end{center}
+O equivalentemente:
+\begin{center}
+$\forall \epsilon > 0$ \hspace{4px} $\mathbb{P}(X_n-X<\epsilon)\xrightarrow{n\to+\infty}1$
+\end{center}
+Si denota con: $X_n\xrightarrow{\mathbb{P}}X$.
+\end{definition}
+
+\vspace{5px}
+
+\begin{definition}
+$(X_n)_{n\in\mathbb{N}}$ \textbf{converge quasi-certamente} alla v.a. X se:
+\begin{center}
+    $\mathbb{P}(\{\omega\in\Omega$ $|$ $X_n(\omega)\xrightarrow{n\to+\infty}X(\omega)\}) = 1$
+\end{center}
+Si denota con: $X_n\xrightarrow{q.c.}X$.
+\end{definition}
+
+\vspace{5px}
+
+\begin{definition}
+$(X_n)_{n\in\mathbb{N}}$ \textbf{converge in distribuzione} alla v.a. X se:
+\[\lim_{x \to +\infty} F_{X_n}(x) = F_X(x)\]
+Per ogni $x$ punto di continuità di $F_X$ 
+%\vspace{2px}
+\newline
+\noindent
+Si denota con: $X_n\xrightarrow{d}X$
+\end{definition}
+
+
+Tra le convergenze proposte vale una gerarchia ben precisa, stabilita dal seguente teorema:
+
+\vspace{5px}
+
+\begin{theorem}
+La convergenza quasi-certa implica la convergenze in probabilità che implica la convergenze in distribuzione.
+\end{theorem}
+
+
+
+Un ulteriore importante teorema, ultimo elemento fondamentale per il teorema centrale del capitolo, è il teorema di Lèvy.
+
+\begin{theorem}[Lèvy]
+Sia $(X_n)_{n\in\mathbb{N}}$ una successione di v.a. con funzione caratteristica $\varphi_n(\Tt)$ per ogni $n$ e sia X una v.a. con funzione caratteristica $\varphi(\Tt)$, vale:
+\begin{center}
+$X_n\xrightarrow{d}X \Longleftrightarrow \varphi_n(\Tt)\xrightarrow{n\to+\infty}\varphi(\Tt)$ \hspace{4px} $\forall\Tt\in\mathbb{R}$
+\end{center}
+\end{theorem}
+
+\vspace{15px}
+
+\subsection{Teorema del limite centrale}
+
+Possiamo finalmente enunciare e dimostrare il teorema del limite centrale, che ci servirà come ponte tra la teoria della probabilità e la statistica. Il seguente teorema lega in una relazione due elementi che a priori sembrerebbero slegati. Seppur sotto ipotesi restrittive, la condizione di IID, il risultato è inaspettato e permette di estendere notevolmente lo studio delle variabili aleatorie. Il solo fatto che io stia facendo una parabola introduttiva al teorema dovrebbe far suonare qualche campanello, vista l'austerità degli appunti.
+
+\vspace{10px}
+\noindent
+Si ricorda la notazione: \[\overline{X}_n=\frac{\sum\limits_{i=0}^n X_i}{n}\]
+
+\begin{theorem}
+Sia $(X_n)_{n\in\mathbb{N}}$ una successione di v.a. IID con $\mu=\E X_1$ e $\sigma^2=\V X_1$, allora:
+\begin{center}
+$S_n=${\large $\frac{\overline{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}}$} $\xrightarrow{d} Z\sim N(0,1)$
+\end{center}
+
+\begin{proof}
+Valutiamo:
+\begin{itemize}
+    \item $\E \overline{X}_n = \frac{\sum\limits_{i=0}^n\E X_i}{n}=\mu$
+    \item $\V \overline{X}_n = \frac{\sum\limits_{i=0}^n\V X_i}{n^2} =$ {\Large$ \frac{\sigma^2}{n}$}
+\end{itemize}
+Normalizzando $X_n$ ottengo: $Y_n=${\large $\frac{X_n-\mu}{\sigma}$}
+\begin{itemize}
+    \item $\E Y_n = 0$
+    \item $\V Y_n = \frac{1}{\sigma^2}\V X_n = 1$
+\end{itemize}
+Pongo ora: $S_n=${\large $\frac{1}{\sqrt{n}\sigma}$} $\sum\limits_{i=0}^n(X_i-\mu)=${\large $\frac{1}{\sqrt{n}}$}$\sum\limits_{i=0}^nY_n$
+\newline
+\noindent
+
+Valuto quindi la funzione caratteristica di $S_n$:
+\vspace{10px}
+\newline
+\[
+\varphi_{S_n}(t)=\E{\large e^{itS_n}}=\E{\large e^{\big(i\frac{t}{\sqrt{n}}\sum_{i=0}^nY_n\big)}}=\varphi_{(\sum_{i=0}^nY_n)}\bigg(\frac{t}{\sqrt{n}}\bigg)=\]
+\begin{equation}
+\label{eq_3}
+\prod\limits_{i=0}^n\varphi_{Y_i}\bigg(\frac{t}{\sqrt{n}}\bigg)=\bigg[\varphi_{Y_1}\Big(\frac{t}{\sqrt{n}}\Big)\bigg]^n    
+\end{equation}
+
+\vspace{10px}
+
+Dove nella penultima uguaglianza si usa l'indipendenza e nell'ultima uguaglianza l'identica distribuzione (IID).
+\newline
+Per poter successivamente valutare il polinomio di Taylor centrato in $0$ si determinano ora le prime due derivate di $\varphi_{Y_1}(\frac{t}{\sqrt{n}})$ in $t=0$ tramite il teorema che lega lafunzione caratteristica e i momenti di una v.a:
+\begin{itemize}
+    \item $\varphi_{Y_1}(0) = 1$
+    \item $\dot{\varphi}_{Y_1}(0) = i\E Y_1 = 0$
+    \item $\ddot{\varphi}_{Y_1}(0) = i^2\E Y_1^2 = -\V Y_1 = -1$
+\end{itemize}
+Ottenendo per $x\rightarrow 0$:
+\[\varphi_{Y_1}(x) = \varphi_{Y_1}(0) + \dot{\varphi}_{Y_1}(0)x + \ddot{\varphi}_{Y_1}(0)\frac{x^2}{2} + o(x^2) = 1 - \frac{x^2}{2} + o(x^2)\]
+Nonchè per $n\rightarrow +\infty $:
+\[\varphi_{Y_1}\bigg(\frac{t}{\sqrt{n}}\bigg) = 1 - \frac{t^2}{2n} + o\bigg(\frac{1}{n}\bigg) \]
+Si osserva che l'o-piccolo è in funzione solo di $\frac{1}{n}$ poichè t si intende come constante.
+\newline
+Ora possiamo sfruttare \ref{eq_3} ottenendo:
+\begin{center}
+    $\varphi_{S_n}(t)=[\varphi_{Y_1}(\frac{t}{\sqrt{n}})]^n=${\large$e^{n\cdot ln(\varphi_{Y_1}(\frac{t}{\sqrt{n}}))}\sim e^{n\cdot ln(1 - \frac{t^2}{2n} + o(\frac{1}{n}))}\sim e^{n(-\frac{t^2}{2n}+o(\frac{1}{n}))}\sim e^{\frac{-t^2}{2}}$}
+\end{center}
+Dove $e^{\frac{-t^2}{2}}$ è la funzione caratteristica di una Normale standard, e dunque usando Lèny otteniamo la tesi.
+\end{proof}
+\end{theorem}

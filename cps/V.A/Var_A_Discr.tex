@@ -1,0 +1,259 @@
+\section{Variabili aleatorie discrete}
+
+\begin{definition}
+Una variabile aleatoria $X$ si dice \textbf{discreta} se prende valori in uno spazio $S\subseteq\mathbb{R}$ \textit{numerabile}. $S$ viene detto \textbf{supporto} di $X$.
+\end{definition}
+
+\begin{definition}
+Data una V.A. $X$ si definisce la funzione:
+\begin{center}
+    $f:\mathbb{R}\longrightarrow\mathbb{R}$ t.c. $f(x)=\mathbb{P}(X=x)$  $\forall x\in\mathbb{R}$
+\end{center}
+È detta \textbf{densità discreta}(\textbf{PMF}).
+\end{definition}
+
+\vspace{10px}
+
+\begin{observation}
+Si osserva subito che:
+\begin{itemize}
+    \item La densità discreta è nulla su $\mathbb{R}\setminus S$ ed è sempre positiva su $S$
+    \item Considerato $S=\bigcup\limits_{i=1}^{+\infty}x_i$ si ottiene:
+    \begin{itemize}
+        \item $\sum\limits_{i=1}^{+\infty}f(x_i)=1$
+        \item $F_X(\hat{x})=\mathbb{P}_X(\bigcup\limits_{i:x_i\leq\hat{x}}\{\omega\in\Omega$ $|$ $X(\omega)=x_i\})=\sum\limits_{i:x_i\leq\hat{x}}f(x_i)$
+    \end{itemize}
+\end{itemize}
+\end{observation}
+
+\vspace{10px}
+
+Verranno ora proposti alcuni importanti esempi di V.A. discrete:
+
+\vspace{10px}
+
+\subsection{Esempi notevoli di v.a. discrete}
+
+\begin{itemize}
+    \item \textbf{V.A. di Bernulli} denotata con $X\sim Be(p)$:
+    \vspace{5px}
+    \newline
+    $\Omega=\{Successo(s),Fallimento(f)\}$ con $\mathbb{P}(s)=p$ e $\mathbb{P}(f)=1-p=q$
+    \vspace{10px}
+    \newline
+    \item \textbf{V.A. Binomiale} denotata con $X\sim Bin(n,p)$:
+    \vspace{5px}
+    \newline
+    $\Omega=\{\omega=(\omega_1,\omega_2,...,\omega_n) , \omega_i\in\{s,f\}\}$ di cardinalità finita con
+    \newline
+    $\mathscr{F}=\mathbf{P}(\Omega)$, $\mathbb{P}(s)=p$ e variabile aleatoria:
+    \begin{center}
+        $X:\Omega\longrightarrow\mathbb{R}$ t.c. $X(\omega)=$
+        "Numero di s nelle n prove"
+        $=\sum\limits_{i=1}^n\mathbbm{1}_{\{s\}}(\omega_i)$
+    \end{center}
+    Dunque il supporto risulta essere: $S=\{1,2,...,n\}$.
+    
+
+    
+    Si valuta la probabilità del singolo evento elementare con k successi su n prove:
+    \begin{center}
+        $\mathbb{P}(\{\omega\})=p^k(1-p)^{n-k}$
+    \end{center}
+    Ottenendo:
+    \begin{center}
+        $\mathbb{P}(X=k)=\binom{n}{k}p^k(1-p)^{n-k}$
+    \end{center}
+    \vspace{10px}
+    \item \textbf{V.A. Geometrica} denotata $X\sim Ge(p)$:
+    \vspace{5px}
+    \newline
+    $\Omega=\{\omega=(\omega_1,\omega_2,\omega_3...) , \omega_i\in\{s,f\}\}$ di cardinalità infinita con
+    \newline
+    $\mathscr{F}=\mathbf{P}(\Omega)$, $\mathbb{P}(s)=p$ e variabile aleatoria:
+    \begin{center}
+        $X:\Omega\longrightarrow\mathbb{R}$ t.c. $X(\omega)=$
+        "Numero di prove necessarie affinché esca s"
+    \end{center}
+    Dunque il supporto risulta essere: $S=\mathbb{N}^*$
+    
+   Inoltre:
+   \begin{center}
+       $\mathbb{P}(X=k)=p(1-p)^{k-1}$
+   \end{center}
+   È sufficiente considerare il primo esito s senza proseguire, infatti se si proseguisse, la probabilità dell'unione sarebbe la somma delle probabilità dei due eventi successivi, che darebbe il medesimo risultato.
+   
+    \vspace{10px}
+    \item \textbf{V.A. Binomiale negativa} denotata $X\sim NBin(p)$:
+    \vspace{5px}
+    \newline
+    $\Omega=\{\omega=(\omega_1,\omega_2,\omega_3...) , \omega_i\in\{s,f\}\}$ di cardinalità infinita con
+    \newline
+    $\mathscr{F}=\mathbf{P}(\Omega)$, $\mathbb{P}(s)=p$ e variabile aleatoria:
+    \begin{center}
+        $X:\Omega\longrightarrow\mathbb{R}$ t.c. $X(\omega)=$
+        "Numero di prove necessarie affinché esca r volte s"
+    \end{center}
+    Dunque il supporto risulta essere: $S=\{r,r+1,r+2,...\}$
+    
+   Inoltre:
+   \begin{center}
+       $\mathbb{P}(X=k)=\binom{k-1}{r-1}p^k(1-p)^{k-r}$
+   \end{center}
+   Si ha $\binom{k-1}{r-1}$ poiché l'ultima posizione è già decisa e occupata da s.
+   
+   \vspace{10px}
+   \item \textbf{V.A. ipergeometrica}:
+   \vspace{5px}
+   \newline
+   \noindent
+   Si considera l'esperimento probabilistico: Vi sono $N$ individui e una proprietà $\chi$ tali che $S\leq N$ individui hanno $\chi$ e $N-S$ non hanno $\chi$. Si estraggono $n$ individui senza ripetizione. Si chiede quale sia la probabilità che $k$ individui abbiano $\chi$.
+   \vspace{5px}
+   \newline
+   \noindent
+   Si considera la V.A. $X$ che conta il numero di individui aventi $\chi$ tra gli $n$ estratti e si osserva:
+   \begin{itemize}
+       \item Il supporto è: $S=\{0,1,2,...,n\}$
+       \item $\mathbb{P}(X=k)=${\Large$\frac{\binom{S}{k}\binom{N-S}{n-k}}{\binom{N}{n}}$}
+       Ottenuto ragionando sull'estrazione in blocco.
+       \item $\mathbb{P}(X=k)=\binom{n}{k}\frac{S(S-1)...(S-k+1)(N-S)(N-S-1)...(N-S-(n-k)+1)}{N(N-1)...(N-n+1)}$ Ottenuto ragionando sulle estrazioni successive.
+   \end{itemize}
+   È evidente che le due formule siano uguali.
+   
+   \vspace{10px}
+   \item \textbf{V.A. di Poisson} denotata con $X\sim Po(\lambda)$: 
+   \vspace{5px}
+   \newline
+   \noindent
+   La V.A. $X$ di Poisson di parametro $\lambda\in\mathbb{R}_{+}$ ha densità discreta:
+   \begin{center}
+       $\mathbb{P}(X=k)=$ {\large$\frac{\lambda^k}{k!}e^{-\lambda}$}
+   \end{center}
+   Si osserva subito che: $\sum\limits_{i=0}^{+\infty}\mathbb{P}(X=k)=\sum\limits_{i=0}^{+\infty}$ {\large$\frac{\lambda^k}{k!}e^{-\lambda}$} $=e^{\lambda}e^{-\lambda}=1$
+\end{itemize}
+
+\vspace{15px}
+
+Si osserva una proprietà della V.A. Geometrica, la \textbf{mancanza di} 
+\newline
+\textbf{memoria}.
+
+\begin{proposition}
+Fissato $m>0$ , $X\sim Ge(p)$ allora: 
+\begin{center}
+$\mathbb{P}(X=k+m)$ $|$ $X>k)=\mathbb{P}(X=m)$    
+\end{center}
+
+\vspace{10px}
+
+\begin{proof}
+$\mathbb{P}(X=k+m)$ $|$ $X>k)=${\large$\frac{\mathbb{P}(X=k+m\cap X>k)}{\mathbb{P}(X>k)}=\frac{\mathbb{P}(X=k+m)}{\mathbb{P}(X>k)}=$
+\vspace{10px}
+\newline
+$=\frac{p(1-p)^{k+m-1}}{\sum\limits_{j=k+1}^{+\infty}p(1-p)^{j-1}}=\frac{p(1-p)^{k+m-1}}{\sum\limits_{j=1}^{+\infty}p(1-p)^{j-1}-\sum\limits_{j=1}^{k}p(1-p)^{j-1}}=\frac{p(1-p)^{k+m-1}}{1-p\frac{1-(1-p)^k}{1-(1-p)}}=\frac{p(1-p)^{k+m-1}}{(1-p)^k}=$}
+\vspace{10px}
+\newline
+$=p(1-p)^{m-1}=\mathbb{P}(X=m)$
+\end{proof}
+\end{proposition}
+
+\vspace{10px}
+
+Una correlazione tra V.A. binomiale e di Poisson si può trovare nella seguente proposizione.
+
+\begin{proposition}
+Sia $(X)_{n\in\mathbb{N}}$ una successione di V.A. binomiali t.c. 
+\newline
+$X\sim Bin(n,\frac{\lambda}{n})$ \hspace{4px} $\forall n\in\mathbb{N}^*$ allora:
+\begin{center}
+    $\lim_{n\to+\infty}\mathbb{P}(X_n = k)=\frac{\lambda^k}{k!}e^{-\lambda}$
+\end{center}
+\end{proposition}
+
+\vspace{20px}
+
+\subsection{Variabili aleatorie (discrete) bidimensionali}
+
+Si può estendere il concetto di variabile aleatoria, sino a qui legata ad una sola dimensione, a più dimesioni. 
+
+\vspace{15px}
+
+\begin{proposition}
+Sia $X$ una V.A. e $g:\mathbb{R}\longrightarrow\mathbb{R}$ una funzione \textit{borel-misurabile}, allora $Y=g\circ X$ è una V.A.
+\begin{proof}
+Sia $E\in\mathcal{B}(\mathbb{R})$:
+\begin{center}
+    $Y^{-1}(E)=\{\omega\in\Omega$ $|$ $Y(\omega)\in E\}=\{\omega\in\Omega$ $|$ $g(X(\omega))\in E\}=$
+    \newline
+    $\{\omega\in\Omega$ $|$ $X(\omega)\in g^{-1}(E)\}$
+\end{center}
+$g^{-1}(E)\in\mathcal{B}(\mathbb{R})$ poichè g borel-misurabile e dunque $Y^{-1}(E)\in\mathscr{F}$ per def. di V.A.
+\end{proof}
+\end{proposition}
+\vspace{10px}
+\begin{definition}
+Date $X,Y$ V.A. si definisce:
+\begin{itemize}
+    \item $(X,Y)$ come \textbf{vettore aleatorio}
+    \item \begin{center}
+    $F_{(X,Y)}:\mathbb{R}^2\longrightarrow\mathbb{R}$ t.c. $F_{(X,Y)}(x,y)=\mathbb{P}(X\leq x, Y\leq y)$
+    \hspace{4px}
+    $\forall (x,y)\in\mathbb{R}^2$
+    \end{center}
+    come \textbf{funzione di distribuzione congiunta} (di probabilità).
+    \item Le funzioni $F_x,F_y$ come \textbf{distribuzioni marginali} (di probabilità)
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Le componenti del vettore aleatorio $(X,Y)$ sono dette \newline \textbf{indipendenti} se:
+\begin{center}
+    $\mathbb{P}(X\leq x, Y\leq y)=\mathbb{P}(X\leq x)\mathbb{P}(Y\leq y)$
+\end{center}
+O equivalentemente denotati: $A_x=\{\omega\in\Omega$ $|$ $X(\omega)\leq x\}$ e $B_y=\{\omega\in\Omega$ $|$ $Y(\omega)\leq y\}$
+\begin{center}
+    $\mathbb{P}(A_x\cap B_y)=\mathbb{P}(A_x)\mathbb{P}(B_y)$
+\end{center}
+\end{definition}
+
+\vspace{10px}
+
+\begin{observation}
+Si può notare che:
+    \[\lim_{x\to+\infty}F_{(X,Y)}(x,y)=\lim_{x\to+\infty}\mathbb{P}(X\leq x, Y\leq y)=\]
+    \[=\mathbb{P}\Big(\lim_{x\to+\infty}\big(\{\omega\in\Omega | X(\omega)\leq x\}\cap\{\omega\in\Omega | Y(\omega)\leq y\}\big)\Big)=\]
+    \[=\mathbb{P}\big(\{\omega\in\Omega | Y(\omega)\leq y\}\big)=F_Y(y)\]
+Si ottiene dunque: $\lim_{x\to+\infty}F_{(X,Y)}(x,y)=F_Y(y)$ e $\lim_{y\to+\infty}F_{(X,Y)}(x,y)=F_X(x)$
+\end{observation}
+
+
+\begin{observation}
+Osservando che:
+\begin{center}
+    $F_{(X,Y)}(x,y)=\sum\limits_{i:x_i\leq x}\sum\limits_{j:y_j\leq y}\mathbb{P}(X=x_i, Y=y_j)$ \hspace{6px} dove $(x_i,y_j)\in S$
+\end{center}
+Inoltre:
+\begin{enumerate}
+    \item $F_X(x)=\lim_{y\to+\infty}F_{(X,Y)}(x,y)=$
+    \vspace{3px}
+    \newline
+    $\lim_{y\to+\infty}\sum\limits_{i:x_i\leq x}\sum\limits_{j:y_j\leq y}\mathbb{P}(X=x_i, Y=y_j)=\sum\limits_{i:x_i\leq x}\sum\limits_j\mathbb{P}(X=x_i, Y=y_j)$
+    \item $F_X(x)=\sum\limits_{i:x_i\leq x}\mathbb{P}(X=x_i)$
+\end{enumerate}
+Dunque mettendo assieme 1. e 2. si ottiene:
+\begin{center}
+    $\mathbb{P}(X=x_i)=\sum\limits_j\mathbb{P}(X=x_i,Y=y_j)$
+\end{center}
+\end{observation}
+
+Altra proprietà degna di nota è la seguente.
+
+\begin{proposition}
+Siano $U,V$ due V.A. discrete con funzione di probabilità $\mathbb{P}(U=u,V=v)=p(u,v)$, allora posta $Z=U+V$ si ha: 
+\begin{center}
+    $\mathbb{P}(Z=z)=\sum\limits_{u}p(u,z-u)$
+\end{center}
+\begin{proof}
+$\mathbb{P}(Z=z)=\mathbb{P}(U+V=z)=\sum\sum\limits_{(u,v) t.c. u+v=z}\mathbb{P}(U=u,V=v)=\sum\sum\limits_{(u,v) t.c. v=u-z}\mathbb{P}(U=u,V=v)=\sum\limits_{u}\mathbb{P}(U=u,V=z-u)$
+\end{proof}
+\end{proposition}

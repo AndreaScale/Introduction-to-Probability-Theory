@@ -1,0 +1,80 @@
+\section{Introduzione}
+Si introducono qui, in maniera intuitiva e non rigorosa, i concetti basilari di probabilità.
+\theoremstyle{definition}
+\begin{definition}
+Un \textbf{esperimento probabilistico} è un fenomeno non deterministico e ripetibile
+\end{definition}
+\begin{example}
+Data $f(x)$\(=e^x\), determinare l'immagine di un punto attraverso essa non è un esperimento probabilistico, in quanto deterministico (si conosce a priori l'esito dell'esperimento)
+\end{example}
+
+\begin{definition}
+Uno \textbf{spazio campionario} è l'insieme dei possibili esiti di uno esperimento probabilistico. Si indica con \(\Omega\).
+\end{definition}
+\begin{example}
+\hspace{2px}
+\begin{itemize}
+    \item Lo spazio campionario del lancio di una moneta è: \(\Omega=\{t,c\}\).
+    \item Lo spazio campionario del lancio ripetuto di una moneta sino alla prima testa è: \(\Omega=\{t,ct,cct,ccct,...\}\).
+    In questo caso \(|\Omega|=\mathbb{N}\).
+\end{itemize}
+\end{example}
+
+Può essere utile rietichettare uno spazio campionario, mettendo i suoi elementi in corrispondeza con i numeri naturali.
+
+\begin{definition}
+Un \textbf{evento} è un un sottoinsieme dello spazio campionario
+\end{definition}
+
+\begin{example}
+Nel lancio del dado bilanciato, dove \(\Omega=\{1,2,3,4,5,6\}\) è lo spazio campionario, tutti i seguenti sono eventi:
+\begin{itemize}
+    \item \(\{1\}\) uscita 1
+    \item \(\{1,3,5\}\) uscita numero dispari (1 o 3 o 5)
+    \item \(\Omega\) uscita di un numero
+\end{itemize}
+\end{example}
+
+\begin{definition}
+Gli elementi dello spazio campionario \(\Omega\) sono detti \textbf{eventi elementari}.
+\end{definition}
+\begin{definition}
+Due eventi \(A,B\subseteq\Omega\) sono \textbf{incompatibili} sse \(A\cap B=\emptyset\)
+\end{definition}
+
+\begin{observation}
+\(A,B\subseteq\Omega\) e \(B\subseteq\) A allora [A si verifica \(  \Rightarrow\) B si verifica]
+\end{observation}
+
+Vogliamo dare ora una definizione, che risulterà poi essere un caso particolare di quella generale, di probabilità.
+\begin{definition}
+Dato un esperimento probabilistico, i cui eventi elementari sono equiprobabili, sia \(\Omega\) il suo spazio campionario \textit{di dimensione finita} e sia \(A\subseteq\Omega\) un evento. La probabilità di A è:
+\begin{center}
+\(\mathbb{P}(A)=|A|/|\Omega|\)
+\end{center}
+\end{definition}
+\newpage
+\begin{observation}
+\label{obs.1.2}
+\begin{enumerate}
+\hspace 1
+    \item Se gli eventi sono incompatibili \(\mathbb{P}\) è addittiva:  \(\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)\)
+    \item \(A\subseteq\Omega\) allora \(\mathbb{P}(A^c)=1-\mathbb{P}(A)\) infatti:
+    \begin{center}
+        \(1=\mathbb{P}(\Omega)=\mathbb{P}(A\cup A^c)=\mathbb{P}(A)+\mathbb{P}(A^c)\)
+    \end{center}
+    \item \(\mathbb{P}(\emptyset)=1-\mathbb{P}(\Omega)=0\)
+    \item \(A,B\subseteq\Omega\) e \(A\subseteq B\) allora \(\mathbb{P}(A)\leq\mathbb{P}(B)\) infatti :
+    \begin{center}
+        \(B=A\cup (B\cap A^c)\) e \(A\cap (B\cap A^c)=\emptyset\), allora \(\mathbb{P}(B)=\mathbb{P}(A)+\mathbb{P}(B\cap A^c)\geq\mathbb{P}(A)\) ricordando che \(\mathbb{P}(C)\geq0\) \(\forall C\subseteq\Omega\)
+    \end{center}
+    \item \(\mathbb{P}(A)\geq0\) \(\forall A\subseteq\Omega\)
+\end{enumerate}
+\end{observation}
+\vspace{30px}
+Si può dornire una definizione geometrica di probabilità:
+
+Presa una regione di piano G e g una porzione di essa, la probabilità che un punto di G cada in g è: 
+\begin{center}
+    \(\mathbb{P}("p\in g")=\)misura(g)/misura(G)
+\end{center}

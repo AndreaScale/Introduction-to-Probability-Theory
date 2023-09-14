@@ -1,0 +1,93 @@
+\section{Stimatori corretti uniformemente a varianza minima}
+
+In questo capitolo si vuole chiarire e rendere rigoroso il concetto di efficienza di uno stimatore.
+
+Si evidenzia subito un importante fatto:
+\begin{center}
+    \textbf{Non} esiste il $miglior$ stimatore
+\end{center}
+Esistono piuttosto stimatori più adatti alla situazione e raccomandati, in funzioni di parametri variabili. Il motivo di questa affermazione risisede nel fatto che la classe delgi stimatori sia troppo larga. Infatti un comune approccio alla ricerca degli stimatori consiste nel limitare la propria attenzione ai soli stimatori \textbf{corretti}. in questo modo possiamo limitare la nostra attenzione allo studio della varianza degli stimatori, ricordando come obiettivo la minimizzazione dell' MSE.
+
+%\vspace{5px}
+
+Cominciamo con il dare delle definizioni fondamentali.
+\begin{definition}
+Siano $T_1,T_2$ due stimatori corretti per il parametro $\theta$, si definisce \textbf{efficienza relativa} il rapporto: \[\frac{\V T_2}{\V T_1}\]
+\end{definition}
+
+\vspace{5px}
+
+\begin{definition}
+Uno stimatore $T$ corretto per il parametro $\theta$ è detto \textbf{efficiente} o \textbf{uniformemente a varianza minima} se: \[\V T\leq \V T'\]
+$\forall T'$ stimatore corretto di $\theta$, $\forall\theta\in\Theta$.
+\end{definition}
+
+
+Il teorema di Cramer-Rao ci fornisce di alcune informazioni, in particolare stabilisce un bound inferiore, della varianza di uno stimatore che soddisfa alcune ipotesi.
+
+\begin{theorem}
+Dato un campione casuale di taglia $n$ estratto da una popolazione $X$ con densità $f(\cdot;\theta)$. Sia $T=g(X_1,...,X_n)$ uno stimatore corretto di $\theta$, se:
+\begin{enumerate}
+    \item $\frac{\partial}{\partial\theta}(log(f(x;\theta)))$ esiste $\forall x,\theta$ \label{1}
+    \item $\frac{\partial}{\partial\theta}\int f(x;\theta) \,dx = \int \frac{\partial}{\partial\theta} f(x;\theta) \,dx$ \label{2}
+    \item $\frac{\partial}{\partial\theta}\big(\int...\int g(x_1,...,x_n)\prod\limits_{i=1}^n f(x;\theta)\,dx_1...dx_n\big)=\int...\int g(x_1,...,x_n)\frac{\partial}{\partial\theta}\prod\limits_{i=1}^n f(x;\theta) \,dx_1...dx_n$ \label{3}
+    \item $\E \Big[\Big(\frac{\partial}{\partial\theta}log\big(f(X;\theta)\big)\Big)^2\Big]$ è finito $\forall\theta\in\Theta$ \label{4}
+\end{enumerate}
+
+Allora:
+    \item \[ \V T \geq \frac{1}{n\E[(\frac{\partial}{\partial\theta}log(f(X;\theta))^2]}\]
+Inoltre l'uguaglianza vale sse $\exists\alpha(\theta)$ t.c. $T=\theta+\alpha(\Tt)\sum\limits_{j=1}^n\frac{\partial}{\partial\theta}log(f(X_j;\theta))$
+\begin{proof}
+Poniamo: \[X=T-\theta\] e \[Y=\frac{\partial}{\partial\theta}log\bigg(\prod_{i=1}^nf(X_i;\theta)\bigg)\] che esiste per \ref{1}.
+
+Usando Cauchy-Swartz \ref{CSINEQ}:
+\begin{equation} \label{3.0}
+   \E \Big[\big(T-\theta\big)\Big(\frac{\partial}{\partial\theta}log\big(\prod_{i=1}^nf(X_i;\theta)\Big)\Big] \leq \E(T-\theta)^2\E\Big(\frac{\partial}{\partial\theta}log(\prod_{i=1}^nf(X_i;\theta)\Big)^2 
+\end{equation}
+Valuto ora la parte sinistra della disuguaglianza:
+\begin{equation} \label{3.1}
+   \E \Big[\big(T-\theta\big)\Big(\frac{\partial}{\partial\theta}log\Big(\prod_{i=1}^nf(X_i;\theta)\Big)\Big]=\E \Big[T\Big(\frac{\partial}{\partial\theta}log\big(\prod_{i=1}^nf(X_i;\theta)\Big)\Big]-\theta\E \Big[\frac{\partial}{\partial\theta}log\big(\prod_{i=1}^nf(X_i;\theta)\Big] 
+\end{equation}
+Di cui il primo addendo:
+\[\E \Big[T\Big(\frac{\partial}{\partial\theta}log\big(\prod_{i=1}^nf(X_i;\theta)\big)\Big)\Big]=\]
+\[\int...\int g(x_1,...,x_n)\Big(\frac{\partial}{\partial\theta}log\big(\prod\limits_{i=1}^n f(x_i;\theta)\big)\Big) f(x_1,...,x_n) \,dx_1...dx_n=\]
+\[\int...\int g(x_1,...,x_n)\Big(\frac{\partial}{\partial\theta}log\big(\prod\limits_{i=1}^n f(x_i;\theta)\big)\Big) \prod\limits_{i=1}^n f(x_i;\theta) \,dx_1...dx_n=\]
+\[\int...\int g(x_1,...,x_n)\frac{1}{\cancel{\prod\limits_{i=1}^n f(x_i;\theta)}}\frac{\partial}{\partial\theta}\big(\prod\limits_{i=1}^n f(x_i;\theta)\big)\cancel{\prod\limits_{i=1}^n f(x_i;\theta)}\,dx_1...dx_n=\]
+\[\int...\int g(x_1,...,x_n)\frac{\partial}{\partial\theta}\big(\prod\limits_{i=1}^n f(x_i;\theta)\big)\,dx_1...dx_n\]
+Usando \ref{3}:
+\[\int...\int g(x_1,...,x_n)\frac{\partial}{\partial\theta}\big(\prod\limits_{i=1}^n f(x_i;\theta)\big)\,dx_1...dx_n=\]
+\[\frac{\partial}{\partial\theta}\bigg(\int...\int g(x_1,...,x_n)\big(\prod\limits_{i=1}^n f(x_i;\theta)\big)\,dx_1...dx_n\bigg)=\]
+\[\frac{\partial}{\partial\theta} \E T=1\]
+
+
+Seguendo un ragionamento del tutto analogo, le uguaglianze sono le stesse di prima senza $g(x_1,...,x_n)$, si ottiene che è nullo (derivata di 1). Dunque la \ref{3.1} vale 1.
+
+Ora valutiamo il secondo fattore a destra della disuguaglianza \ref{3.0}:
+\[\E\bigg[\Big(\frac{\partial}{\partial\theta}log(\prod_{i=1}^nf(X_i;\theta)\Big)^2\bigg]=\E\bigg[\Big(\sum\limits_{i=1}^n\frac{\partial}{\partial\theta}log(f(X_i;\theta)\Big)^2\bigg]=\]
+\[\E\Big(\sum\limits_i\frac{\partial}{\partial\theta}log(f(X_i;\theta)\sum\limits_j\frac{\partial}{\partial\theta}log(f(X_j;\theta)\Big)=\]
+\[\E\Big(\sum\limits_i\sum\limits_j\frac{\partial}{\partial\theta}log(f(X_i;\theta)\frac{\partial}{\partial\theta}log(f(X_j;\theta)\Big)=\sum\limits_i\sum\limits_j\E\Big(\frac{\partial}{\partial\theta}log(f(X_i;\theta))\frac{\partial}{\partial\theta}log(f(X_j;\theta))\Big)\]
+\newpage
+Ora se:
+\begin{itemize}
+    \item $i\neq j$ si può fattorizzare il prodotto ottenendo due elementi della forma del secondo addendo della \ref{3.1}, quindi ottenendo $0$. Si presti attenzione, si sta usando $f(X_i;\Tt)$, \textbf{non} $f(x_i;\Tt)$.
+    \item $i=j$ si ottiene:
+    \[\E\Big(\frac{\partial}{\partial\theta}log(f(X_i;\theta))\frac{\partial}{\partial\theta}log(f(X_j;\theta))\Big)=\E\Big(\big(\frac{\partial}{\partial\theta}log(f(X_i;\theta))\big)^2\Big)\]
+\end{itemize}
+Dunque riprendendo la catena di uguaglianze:
+\[\sum\limits_i\sum\limits_j\E\Big(\frac{\partial}{\partial\theta}log(f(X_i;\theta))\frac{\partial}{\partial\theta}log(f(X_j;\theta))\Big)=\sum\limits_{i=1}^n\E\Big(\big(\frac{\partial}{\partial\theta}log(f(X_i;\theta))\big)^2\Big)=\]
+\[n\E\Big(\big(\frac{\partial}{\partial\theta}log(f(X;\theta))\big)^2\Big)\]
+
+Dunque mettendo tutto assieme, ricordandosi che $\V T=\E(T-\theta)^2$ poichè $T$ è corretto, si ottiene la tesi.
+\end{proof}
+\end{theorem}
+
+\vspace{15px}
+
+Conseguenza del teorema è la seguente.
+\begin{proposition}
+$T$ è uno stimatore corretto per $\theta$ con varianza che raggiunge il limite inferiore di Cramer-Rao, allora $T$ è stimatore di massima verosimiglianza.
+\begin{proof}
+Basta usare la condizione necessaria sufficiente dell'uguaglianza di Cramer-Rao, ricordarsi che $L(\theta)=\prod_{i=1}^nf(x_i;\theta)$, porre uguale a zero la derivata della \textit{log-verosimiglianza} e trovare così che essa si annulla per $\Tt=T$ e quindi:
+\[\hat{\Tt}_{ML}=T\]
+\end{proof}
+\end{proposition}

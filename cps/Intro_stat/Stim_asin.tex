@@ -1,0 +1,59 @@
+\section{Proprietà asintotiche e sufficienza di uno stimatore}
+\subsection{Proprietà asintotiche}
+Com'è naturale che avvenga ci si interroga sulla natura degli stimatori di campioni causuali di taglia tendente all'infinito. Infatti noi abbiamo sempre considerato c.c. di taglia $n\in\mathbb{N}^*$, ma viene naturale immaginarsi come csi comportano in termini di correttezza gli stimatori per c.c. di taglia $n\longrightarrow+\infty$. 
+
+Iniziamo con il fornire due definizioni.
+
+\vspace{5px}
+
+\begin{definition}
+Uno stimatore $T_n=g(X_1,...,X_n)$ per il parametro $\Tt$ si dice \textbf{asintoticamente corretto} se:
+\[\lim_{n\to+\infty}\E T_n=\Tt\]
+\end{definition}
+
+\vspace{5px}
+
+Si osserva subito che la correttezza implica la correttezza asintotica. 
+
+\begin{definition}
+Uno stimatore $T_n=g(X_1,...,X_n)$ è detto \textbf{consistente} per il parametro $\Tt$ se $\forall\epsilon>0$:
+\[\lim_{n\to+\infty}\mathbb{P}(|T_n-\Tt|<\epsilon)=1\]
+Nonchè: $T_n\xrightarrow{\mathbb{P}}\Tt$.
+\end{definition}
+
+\vspace{10px}
+
+Un importante teorema che lega la consistenza con la correttezza asintotica è il seguente.
+
+\begin{theorem}
+Sia $T_n$ uno stimatore asintoticamente corretto per $\Tt$ e con $\V T_n$ finita $\forall n\in\mathbb{N}^*$:
+\begin{center}
+    Se $\V T_n\xrightarrow{n\to+\infty}0$ allora $T_n$ è consistente.
+\end{center}
+\begin{proof}
+Ricordando la disuguaglianza di Markov \ref{Dis_Markov}:
+\[0\leq \mathbb{P}(|T_n-\Tt|\geq\epsilon)\leq \frac{\E(T_n-\Tt)^2}{\epsilon^2}=\frac{\V T_n + \E^2(T_n-\Tt)}{\epsilon^2}\xrightarrow{n\to+\infty}0\]
+Dove l'ultimo limite deriva dall' ipotesi sulla varianza e sulla correttezza asintotica di $T_n$.
+\end{proof}
+\end{theorem}
+
+\subsection{Sufficienza}
+
+Come detto nell'introduzione sugli stimatori uno stimatore è una qualsiasi statistica. Questa definizione, così generale, ha però delle pecche, o meglio, non tiene conto di quando uno stimatore possa essere considerato sufficientemente valido o meno. Per colmare questo aspetto della teoria sugli stimatori ci viene in soccorso la definizione di \textit{sufficienza} di uno stimatore.
+
+\vspace{5px}
+
+\begin{definition}
+Sia $(X_1,...,X_n)$ un c.c estratto da una popolazione con densità $f(\cdot;\Tt)$, una statistica $S=s(X_1,...,X_n)$ e detta \textbf{sufficiente} se la distribuzione condizionata di $(X_1,...,X_n)$ dato ${S=s_0}$ $non$ dipende da $\Tt$, $\forall s_0\in SUPP(S)$.
+\end{definition}
+
+\vspace{5px}
+
+Un banale ma esplicativo esempio può essere condotto dal lettore analizzando un campione bernulliano di taglia 3 e valutando la sufficienza della statistica che somma gli elementi e della statistica che somma il terzo con il prodotto dei primi due (osservando che il primo risulta sufficiente mentre il secondo no).
+
+Un importante teorema, del quale non vedremo la dimostrazione, che fornisce una condizione necessaria e sufficiente per la sufficienza di una statistica è il seguente.
+
+\begin{theorem}[Fattorizzazione o Fisher-Neyman]
+Sia $(X_1,...,X_n)$ un c.c. con genitrice $X$ di densità $f(x;\Tt)$. La statistica $S=s(X_1,...,X_n)$ è sufficiente se e solo se: \[f_{(X_1,...,X_n)}(x_1,...,x_n)=g(s(x_1,...,x_n);\Tt)h(x_1,...,x_n)\]
+Dove $h$ è non negativa e \textit{non} dipendente da $\Tt$ mentre $g$ è non negativa e dipendente da $(x_1,...,x_n)$ \underline{solo} tramite $s(x_1,...,x_n)$.
+\end{theorem}

@@ -1,0 +1,142 @@
+\begin{definition}
+    Siano $(A,\mathcal{A})$ e $(E,\mathcal{E})$ due spazi misurabili, una funzione $f:\mathcal{A}\longrightarrow\mathcal{E}$ è detta \textbf{misurabile} se:
+    \begin{center}
+         $B\in\mathcal{E} \Rightarrow f^{-1}(B)\in\mathcal{A}$ \hspace{4px} $\forall B\in\mathcal{E}$ 
+    \end{center}
+\end{definition}
+
+\vspace{5px}
+
+\begin{definition}
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio probabilistico e $(E,\mathcal{E})$ uno spazio misurabile, una funzione $X:\Omega\longrightarrow\mathcal{E}$ \textit{misurabile} è una \textbf{variabile aleatoria}.
+\end{definition}
+
+\vspace{10px}
+
+\begin{example}
+    Si prende come spazio misurabile $(\mathbb{R},\mathcal{B}(\mathbb{R}))$ (i reali con i suoi boreliani). 
+    \begin{itemize}
+        \item $\mathbb{P}(X=3)=\mathbb{P}(X^{-1}(\{3\}))$
+        \item $\mathbb{P}(X\geq7)=\mathbb{P}(X^{-1}([7,+\infty)))$
+        \item $\mathbb{P}(X^{-1}(B))=\mathbb{P}(\{\omega\in\Omega$ $|$ $X(\omega)\in B\})$ \hspace{4px} $\forall B\in\mathcal{B}(\mathbb{R})$
+    \end{itemize}
+\end{example}
+
+\vspace{10px}
+
+\begin{theorem}
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio probabilistico, $(E,\mathcal{E})$ uno spazio
+    \newline
+    misurabile e $X:\Omega\longrightarrow\mathcal{E}$ una variabile aleatoria, allora:
+    \begin{center}
+        $\mathbb{P}_X(\cdot)\coloneqq\mathbb{P}(X^{-1}(\cdot))$ al variare di $B\in\mathcal{E}$ 
+    \end{center}
+    è una \textbf{misura di probabilità}.
+\end{theorem}
+
+\vspace{5px}
+
+\begin{itemize}
+    \item $\mathbb{P}_X(\cdot)$ è detta \textbf{distribuzione di X} oppure \textbf{legge di X}
+    \item Variabili aleatorie (V.A.) diverse che inducono la stessa distribuzione si dicono \textbf{identicamente distribuite}
+\end{itemize}
+
+\vspace{10px}
+
+\begin{definition}
+    Data $X$ una variabile aleatoria in $\mathbb{R}$, la funzione
+    \newline 
+    $F_X:\mathbb{R}\longrightarrow[0,1]$ t.c. $F_X(x)=\mathbb{P}(X\leq x)$ si dice \textbf{funzione di distribuzione}.
+\end{definition}
+
+
+
+Il seguente teorema ci fornirà importanti informazioni sulla natura della funzione di distribuzione.
+
+\begin{theorem}
+    Data una funzione di distribuzione $F_X$ valgono le seguenti:
+    \begin{enumerate}
+        \item $F_X$ è non decrescente
+        \item $F_X$ è continua da destra
+        \item  $\lim_{x\to+\infty} F_X(x) = 1$ e $\lim_{x\to-\infty} F_X(x) = 0$
+    \end{enumerate}
+\begin{proof}
+\begin{enumerate}
+    \item Siano $x,y\in\mathbb{R}$ t.c. $x\leq y$ allora:
+    \begin{center}
+        $\{\omega\in\Omega$ $|$ $X(\omega)\leq x\} \subseteq \{\omega\in\Omega$ $|$ $X(\omega)\leq y\}$
+    \end{center}
+    Dunque per monotonia di $\mathbb{P}$ si ha:
+    \begin{center}
+        $\mathbb{P}(X\leq x)\leq\mathbb{P}(X\leq y)$
+        \hspace{4px}
+        $\Rightarrow$
+        \hspace{4px}
+        $F_X(x)\leq F_X(y)$
+    \end{center}
+    \item Voglio mostrare $\lim_{x\to x_0^+} F_X(x) = F_X(x_0)$:
+    \vspace{10px}
+    \newline
+    \noindent
+    Considero $A_n=\{\omega\in\Omega$ $|$ $X(\omega)\in[x_0,x_0+\frac{1}{n})\}$ al variare di $n\in\mathbb{N}$ e osservo essere una successione decrescente all'insieme vuoto. 
+    \vspace{10px}
+    \newline
+    \noindent
+    Dunque applicando la definizione di funzione di probabilità:
+    \begin{center}
+        $\lim_{x\to x_0^+} F_X(x)=\lim_{n\to+\infty} F_X(x_0+\frac{1}{n})=\lim_{n\to+\infty}\mathbb{P}(X\leq x_0+\frac{1}{n})=$
+        \vspace{5px}
+        \newline
+        $=\lim_{n\to+\infty}\mathbb{P}(\{\omega\in\Omega$ $|$ $X(\omega)\in(-\infty,x_0+\frac{1}{n})\})=$
+        \vspace{5px}
+        \newline
+        $=\lim_{n\to+\infty}\mathbb{P}(\{\omega\in\Omega$ $|$ $X(\omega)\in(-\infty,x_0)\}\cup(A_n))=$
+        \vspace{5px}
+        \newline
+        $=\mathbb{P}(X\leq x_0)+\lim_{n\to+\infty}\mathbb{P}(A_n)=F_X(x_0)$
+    \end{center}
+    \item 
+    \begin{itemize}
+        \item $\lim_{x\to+\infty} F_X(x)=\lim_{x\to+\infty}\mathbb{P}(\{\omega\in\Omega$ $|$ $X(\omega)\in(-\infty,x)\})=\mathbb{P}(\Omega)=1$
+        \item $\lim_{x\to-\infty} F_X(x)=\lim_{x\to-\infty}\mathbb{P}(\{\omega\in\Omega$ $|$ $X(\omega)\in(-\infty,x)\})=\mathbb{P}(\emptyset)=0$
+    \end{itemize}
+\end{enumerate}
+\end{proof}    
+\end{theorem}
+
+
+
+\begin{proposition}
+Sia $X$ una variabile indipendente a valori in $\mathbb{R}$ e siano
+\newline
+$a,b\in\mathbb{R}$ tali che $a\leq b$, allora valgono:
+\begin{enumerate}
+    \item $\mathbb{P}(a< X\leq b) = F_X(b)-F_X(a) $
+    \item $\mathbb{P}(X = a) = F_X(a) - \lim_{x\to a^-}F_X(x)$
+    \item $\mathbb{P}(a< X< b) = \lim_{x\to b^-}F_X(x) - F_X(a)$
+    \item $\mathbb{P}(X > a) = 1 - F_X(a)$
+    \item $\mathbb{P}(a\leq X\leq b) = F_X(b) - \lim_{x\to a^-}F_X(x)$
+    \item $\mathbb{P}(a< X) = \lim_{x\to a^-}F_X(x)$
+    \item $\mathbb{P}(X\geq a) = 1 - \lim_{x\to a^-}F_X(x)$
+\end{enumerate}
+\begin{proof}
+Si dimostra solo la 2. Le altre o sono conseguenze o seguono lo stesso schema dimostrativo.
+Ricordiamo che dati $C,D\in\mathscr{F}$ tali che $C^c\cap D=\emptyset$ si ha la relazione:
+\begin{center}
+    $\mathbb{P}(C\setminus D)=\mathbb{P}(C)-\mathbb{P}(D)$
+\end{center}
+Dunque ponendo:
+\begin{center}
+    $C=\{\omega\in\Omega$ $|$ $X(\omega)\leq a\}$ e $D=\{\omega\in\Omega$ $|$ $X(\omega)\leq a-\frac{1}{n}\}$ 
+\end{center}
+Si ottiene così:
+\begin{center}
+    $\mathbb{P}(X=a)=\lim_{n\to+\infty}\mathbb{P}(C\setminus D)=\lim_{n\to+\infty}\mathbb{P}(C)-\mathbb{P}(D)=$
+    \vspace{5px}
+    \newline
+    $=F_X(a)-\lim_{n\to+\infty}\mathbb{P}(X\leq a-\frac{1}{n})=F_X(a)-\lim_{x\to a^-}F_X(x)$
+\end{center}
+\end{proof}
+\end{proposition}
+
+\vspace{10px}

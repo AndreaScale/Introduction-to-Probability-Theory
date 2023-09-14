@@ -1,0 +1,160 @@
+\subsection{Disuguaglianze}
+
+Si propongono ora alcune importanti disuguaglianze relative allo studio delle variabili aleatorie discrete.
+
+\vspace{15px}
+
+
+\begin{proposition}
+$X$ v.a. non negativa q.c. per $\alpha>0$:
+\begin{equation}
+    \mathbb{P}(X\geq\alpha)\leq
+    {\large \frac{\E X}{\alpha}}
+\end{equation}
+\label{Dis1}
+
+\vspace{5px}
+\begin{proof}
+$\E X=\sum\limits_ix_i\mathbb{P}(X=x_i)=\sum\limits_{i:x_i<\alpha}x_i\mathbb{P}(X=x_i)+\sum\limits_{i:x_i\geq\alpha}x_i\mathbb{P}(X=x_i)\geq\sum\limits_{i:x_i\geq\alpha}x_i\mathbb{P}(X=x_i)\geq\alpha\sum\limits_{i:x_i\geq\alpha}\mathbb{P}(X=x_i)=\alpha\mathbb{P}(X\geq\alpha)$
+\end{proof}
+\end{proposition}
+
+\vspace{10px}
+
+\begin{proposition}[Disuguaglianza di \textbf{Markov}] \label{Dis_Markov}
+$X$ v.a. con $\beta>0$ e $k\in\mathbb{N}^*$:
+\begin{center}
+    $\mathbb{P}(|X|\geq\beta)\leq$
+    {\large $\frac{\E|X|^k}{\beta^k}$}
+\end{center}
+\vspace{5px}
+\begin{proof}
+Si applichi \ref{Dis1} a $\mathbb{P}(|X|^k\geq\alpha)$ applicando poi il cambio di parametro $\beta=\alpha^k$.
+\end{proof}
+\end{proposition}
+
+\vspace{10px}
+
+\begin{proposition}[Disguaglianza di \textbf{Chebyshev}]
+$X$ v.a. e $\beta>0$ si ha:
+\begin{center}
+    $\mathbb{P}(|X-\E X|\geq\beta)=$
+    {\large $\frac{\V X}{\beta^2}$}
+\end{center}
+\vspace{5px}
+\begin{proof}
+Si applichi Markov a $|X-\E X|$ con $k=2$.
+\end{proof}
+\end{proposition}
+
+
+\begin{proposition}[Disguaglianza di \textbf{Jensen}]
+Sia $X$ v.a. e $\phi$ una funzione convessa si ha:
+\begin{center}
+    $\varphi(\E X)\leq\E(\varphi(X))$
+\end{center}
+\vspace{5px}
+\begin{proof}
+Si dimostra per induzione che $\varphi(\sum\limits_{i=1}^np_ix_i)\leq\sum\limits_{i=1}^np_i\varphi(x_i)$.
+\newline
+La base dell'induzione con $n=2$ è la definizione di funzione convessa.
+\newline
+Supponiamo valga per $n-1$:
+\vspace{5px}
+\newline
+$\varphi(\sum\limits_{i=1}^np_ix_i)=\varphi(p_1x_1+(1-p_1)\sum\limits_{i=2}^n\frac{p_i}{1-p_1}x_i)\leq p_1\varphi(x_1)+(1-p_1)\varphi(\sum\limits_{i=2}^n\frac{p_i}{1-p_1}x_i)$
+\vspace{5px}
+\newline
+Si verifica facilmente che $\sum\limits_{i=2}^n${\large$\frac{p_i}{1-p_1}$}$=1$. Dunque posso applicare l'ipotesi induttiva:
+\vspace{5px}
+\newline
+$\varphi(p_1x_1)+(1-p_1)\varphi(\sum\limits_{i=2}^n\frac{p_i}{1-p_1}x_i)\leq p_1\varphi(x_1)+(1-p_1)\sum\limits_{i=2}^n$ {\large$\frac{p_i}{1-p_1}$} $\varphi(x_i)=\sum\limits_{i=1}^np_i\varphi(x_i)$
+\vspace{5px}
+\newline
+Usando questa propietà e ricordandosi la definizione di valore atteso si dimostra la tesi.
+\end{proof}
+\end{proposition}
+
+\vspace{10px}
+
+\begin{proposition}[Disguaglianza di \textbf{H\"{o}lder}]
+Siano $X,Y$ v.a. e $p,q\in\mathbb{R}$ t.c. $\frac{1}{p}+\frac{1}{q}=1$ si ha:
+\begin{center}
+    $\E |XY|\leq(\E|X|^p)^{\frac{1}{p}}(\E|Y|^q)^{\frac{1}{q}}$
+\end{center}
+\vspace{5px}
+\begin{proof}
+Ci si ricorda che presi $a,b\in\mathbb{R}_{\geq0}$ esistono $s,t\in\mathbb{R}$ tali che $a=e^{\frac{s}{p}}$ e $b=e^{\frac{t}{q}}$, dove $\frac{1}{p}+\frac{1}{q}=1$. Poichè $e$ è una funzione convessa si può applicare Jasen:
+\begin{center}
+    $e^{\frac{s}{p}+\frac{t}{q}}\leq \frac{1}{p}e^s+\frac{1}{q}e^t$
+\end{center}
+Dunque si ottiene:
+\begin{center}
+    $ab\leq$ {\large $\frac{a^p}{p}+\frac{b^q}{q}$}
+\end{center}
+
+Ponendo $a=${\large $\frac{X}{(\E X^p)^{\frac{1}{p}}}$} e $b=${\large $\frac{Y}{(\E Y^q)^{\frac{1}{q}}}$}, applicando $\E$ (considerandone la monotonia) e ricordando $\frac{1}{p}+\frac{1}{q}=1$ si ottiene:
+\begin{center}
+    {\large $\frac{\E XY}{\E^{\frac{1}{p}} X^p\E^{\frac{1}{q}} Y^q}$}$\leq 1$
+\end{center}
+Da cui la tesi.
+\end{proof}
+\end{proposition}
+
+\vspace{5px}
+
+\begin{proposition}[Disuguaglianza di \textbf{Schwarz}] \label{CSINEQ}
+\'E H\"older con $p=q=2$:
+\begin{center}
+    $\E |XY|\leq(\E |X|^2)^{\frac{1}{2}}(\E |Y|^2)^{\frac{1}{2}}$
+\end{center}
+\end{proposition}
+
+
+
+\begin{proposition}[Disuguaglianza di \textbf{Lyapunov}]
+Sia $X$ v.a. e $0<\alpha\leq\beta$:
+\begin{center}
+    $(\E |X|^{\alpha})^{\frac{1}{\alpha}}\leq(\E |X|^{\beta})^{\frac{1}{\beta}}$
+\end{center}
+\vspace{5px}
+\begin{proof}
+Poniamo $p=\frac{\beta}{\alpha},q=\frac{\beta}{\beta-\alpha}$ e $Y:=1$ e $X:=|X|^{\alpha}$ v.a. dunque si applica H\"older.
+\end{proof}
+\end{proposition}
+
+\newpage
+
+\section{Legge debole dei grandi numeri}
+
+Grazie alle precendenti disuguaglianze possiamo enunciare e dimostrare il seguente teorema.
+
+\vspace{5px}
+\newcommand{\xn}{\overline{X}_n}
+
+\begin{theorem}[Bernulli o legge debole dei grandi numeri per v.a. i.i.d.]
+Sia $(X_n)_{n\geq 1}$ una successione di v.a. i.i.d (indipendenti identicamente distribuite) e sia $\mu=\E X_n$ e $\sigma^2=\V X_n$ \hspace{2px} $\forall n$. 
+\newline 
+\noindent
+Denominata $\overline{X}_n=\frac{1}{n}\sum\limits_{i=1}^nX_i$ \textbf{media empirica} si ha:
+    \[\lim_{n\to+\infty}\mathbb{P}(|\overline{X}_n-\mu|>\eta)=0 \hspace{2px} \forall\eta>0\]
+\vspace{5px}
+\begin{proof}
+Si osserva inizialmente, ricordandosi il fatto che le v.a. sono indenticamente distribuite, che:
+\begin{itemize}
+    \item $\E\overline{X}_n=\mu$
+    \item $\V\overline{X}_n=$ {\large$\frac{\sigma^2}{n}$}
+\end{itemize}
+Applico Chebyshev a $\xn$:
+\begin{center}
+    $\mathbb{P}(|\xn-\mu|\geq\eta)\leq$ {\large$\frac{\sigma^2}{n\eta^2}$}
+\end{center}
+Passando al limite si ottiene la tesi.
+\end{proof}
+\end{theorem}
+
+\vspace{10px}
+
+\'E utile una considerazione in merito al teorema appena dimostrato. Esso, sotto ristrette condizioni che verranno ammorbidite in seguito (legge forte dei grandi numeri), formalizza e dimostra vera l'intuizione che ci porta a pensare che lanciando un grande numero di volte una moneta la probabilità che uscirà T è circa $\frac{1}{2}$. 
+
+Per vedere meglio l'esempio descritto sopra si può applicare il teorema ad una Bernulli di probabilità $\frac{1}{2}$. 

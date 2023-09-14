@@ -1,0 +1,104 @@
+\begin{definition}
+Sia $n\in\mathbb{N}^*$ e $\underline{X}=(X_1,...,X_n)$ un vettore aleatorio di componenti IID con densità (discreta o continua) $f(\cdot;\theta)$. Si dice $\underline{X}$ \textbf{campione casuale} di taglia $n$ estratto da una popolazione (genitrice) $X$ con densità $f(\cdot;\theta)$.
+\end{definition}
+
+\vspace{10px}
+
+Si può considerare $\underline{X}$ come un esperimento aleatorio ripetuto n volte.
+
+\vspace{10px}
+
+\begin{definition}
+Sia $X$ una popolazione di un campione casuale caraterrizzata da una densità $f(\cdot,\theta)$. Sia $\mathcal{X}$ il supporto di $X$ ($\mathcal{X}\in\mathbb{R}^n$) allora la famiglia di densità di probabilità $\{f(\cdot;\theta) : \theta\in\Theta\}$, parametrizzata da $\theta$ è detta \textbf{modello statistico}.
+\newline
+Il supporto di $\underline{X}$ è detto \textbf{spazio dei campioni}.
+\end{definition} 
+
+\vspace{5px}
+
+\begin{observation}
+Si nota che:\[f_{(X_1,...,X_n)}(x_1,...,x_n)=\prod\limits_{i=1}^nf(x_i;\theta)\]
+\end{observation}
+
+\vspace{15px}
+
+\begin{definition}
+Sia $(X_1,...,X_n)$ un campione casuale e sia $G:\mathbb{R}^n\longrightarrow\mathbb{R}^m$ con $m\geq 1$ borel-misurabile $non$ dipendente da $\theta$ è detta \textbf{statistica}.
+\end{definition}
+
+\vspace{10px}
+
+\begin{definition}
+Sia $(X_1,...,X_n)$ un campione casuale estratto da una popolazione $X$ con densità $f(\cdot;\theta)$. Il \textbf{momento campionario} è definito come:
+\[M_k=\frac{1}{n}\sum_{i=1}^nX_i^k\]
+Con $k\in\mathbb{N}^*$
+\end{definition}
+
+\vspace{15px}
+
+Denotando ora $\mu_k=\E X^k$ possiamo enunciare e dimostrate il seguente teorema.
+
+\begin{theorem}
+Sia $(X_1,...,X_n)$ il campione casuale di taglia $n$ estratto da una popolazione $X\sim f(\cdot,\theta)$ allora:
+\begin{enumerate}
+    \item $\E M_k=\mu_k$
+    \item $\V M_k=\frac{1}{n}(\mu_{2k}-\mu_k^2)$
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}
+    \item \[\E M_k=\E\bigg(\frac{1}{n}\sum_{i=1}^nX_i^k\bigg)=\frac{1}{n}\sum_{i=0}^n\E X_i^k=\mu_k\]
+    Dove nell'ultimo passaggio si usa la identica distribuzione.
+    \item \[\V M_k=\V \bigg(\frac{1}{n}\sum_{i=1}^nX_i^k\bigg)= \frac{1}{n^2}\sum_{i=1}^n\V X_i^k=\]
+    \[=\frac{1}{n}\sum_{i=0}^n(\E X_i^{2k}-\E^2 X_i^k)=\frac{1}{n}(\mu_{2k}-\mu_k^2)\]
+    Dove nel secondo passaggio si usa l'idipendenza delle v.a.
+\end{enumerate}
+\end{proof}
+\end{theorem}
+
+\vspace{10px}
+
+Si vuole fornire un campione casuale di un nuovo "concetto" di momento.
+
+\begin{definition}
+Sia $(X_1,...,X_n)$ un campione casuale di taglia $n$ estratto da una popolazione $X$ con densità $f(\cdot,\theta)$, si definisce \textbf{varianza campionaria} la quantità: \[S^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X}_n)^2\]
+\end{definition}
+\vspace{10px}
+
+La varianza campionaria viene messa in relazione alla varianza del campione tramite il seguente teorema, dove $\sigma^2=\V X$.
+
+\newcommand{\sliin}{\sum\limits_{i=1}^n}
+\newcommand{\slin}{\sum\limits_{i=0}^n}
+\newcommand{\sliinf}{\sum\limits_{i=1}^{+\infty}}
+\newcommand{\slinf}{\sum\limits_{i=0}^{+\infty}}
+\begin{theorem} \label{teor_20}
+Sia $(X_1,...,X_n)$ un campione casuale di taglia $n$ estratto da una popolazione $X\sim f(\cdot,\theta)$ allora:
+\begin{enumerate}
+    \item $\E S^2=\sigma^2$ 
+    \item $\V S^2=\frac{1}{n}(\mu_4-\frac{n-3}{n-1}\sigma^4)$
+\end{enumerate}
+
+\begin{proof}
+Si dimostra solo la 1.
+\newline
+\begin{enumerate}
+    \item Si osserva:
+    \begin{center}
+        $\sliin(X_i-\overline{X}_n)^2=\sliin(X_i-\mu+\mu-\overline{X}_n)^2=$
+        \newline
+        $\sliin\Big( (X_i-\mu)^2+(\overline{X}_n-\mu)^2-2(X_i-\mu)(\overline{X}_n-\mu))=\sliin(X_i-\mu)^2+n(\overline{X}_n-\mu)^2-2(\overline{X}_n-\mu)\sliin(X_i-\mu)=$
+        \newline
+        $\sliin(X_i-\mu)^2+n(\overline{X}_n-\mu)^2-2(\overline{X}_n-\mu)n(\overline{X}_n-\mu)=\sliin(X_i-\mu)^2-n(\overline{X}_n-\mu)^2$
+    \end{center}
+    Si ottiene così:
+    \begin{center}
+        $\E S^2=\E \bigg(\frac{1}{n-1}\sliin(X_i-\overline{X}_n)\bigg)=\frac{1}{n-1}\E\bigg(\sliin(X_i-\overline{X}_n)\bigg)=$
+        \vspace{5px}
+        \newline
+        $\frac{1}{n-1}\E\bigg(\sliin(X_i-\mu)^2-n(\overline{X}_n-\mu)^2\bigg)=\frac{1}{n-1}\bigg(\sliin\E(X_i-\mu)^2-n\E(\overline{X}_n-\mu)^2\bigg)=\frac{1}{n-1}(n\sigma^2-\sigma^2)=\sigma^2$
+    \end{center}
+    \vspace{5px}
+    Dove: $\E (\overline{X}_n-\mu)^2=\V \overline{X}_n=\frac{1}{n}\V X=\frac{1}{n}\sigma^2$
+\end{enumerate}
+\end{proof}
+\end{theorem}
+

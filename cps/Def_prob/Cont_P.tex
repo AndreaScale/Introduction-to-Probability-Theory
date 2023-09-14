@@ -1,0 +1,162 @@
+\subsection{Continuità di $\mathbb{P}$}
+\begin{definition}
+Sia $\{\Omega, \mathscr{F}\}$ uno spazio misurabile e $\Pi:\mathscr{F}\longrightarrow\mathbb{R}$ una funzione, si dice che $\Pi$ è \textbf{continua} se:
+\begin{center}
+    $\lim_{x\to+\infty} \Pi(A_n)=\Pi(\lim_{x\to\infty} A_n)$
+\end{center}
+\end{definition}
+
+Si vuole ora però definire rigoroamente cosa s'intende per limite di una successione di sottoinsiemi: $\lim_{x\to\infty} A_n$.
+
+\begin{definition}
+Sia $(C_n)_{n\in \mathbb{N}}$ una successione di insiemi, si dice:
+\begin{itemize}
+    \item \textbf{Crescente} se $C_n\subseteq C_{n+1}$ $\forall n\in\mathbb{N}$ e si definisce:
+    \begin{center}
+        $\lim_{x\to\infty} C_n=\bigcup\limits_{n=1}^{+\infty}C_n$
+    \end{center}
+    \item \textbf{Decrescente} se $C_n\supseteq C_{n+1}$ $\forall n\in\mathbb{N}$ e si definisce:
+    \begin{center}
+        $\lim_{x\to\infty} C_n=\bigcap\limits_{n=1}^{+\infty}C_n$
+    \end{center}
+\end{itemize}
+\end{definition}
+
+Si definiscono inoltre i limiti superiore e inferiore di una successione di insemi.
+
+\begin{definition}
+    Sia $(A_n)_{n\in \mathbb{N}}$ una successione di insiemi, si definiscono:
+\begin{itemize}
+    \item $\liminf_{x\to\infty} A_n=\{\omega\in\Omega \mid \exists\hat{n}\in\mathbb{N}$ t.c. $\forall k\geq\hat{n}$ 
+    $\omega\in A_k\}$
+    \item $\limsup_{x\to\infty} A_n=\{\omega\in\Omega \mid \forall n\in\mathbb{N}$  $\exists k\geq n$ 
+    $\omega\in A_k\}$
+\end{itemize}
+
+Dunque si dice che $(A_n)_{n\in \mathbb{N}}$ \textbf{ammette limite} se:
+\begin{center}
+    $\limsup_{x\to\infty} A_n=\liminf_{x\to\infty} A_n$
+\end{center}
+\end{definition}
+
+Due definzioni equivalenti ma utili dal punto di vista del calcolo, e che forse rendono anche più chiari i concetti sono le seguenti:
+\begin{itemize}
+    \item $\liminf_{x\to\infty} A_n= \large\bigcup\limits_{n=1}^{+\infty} \bigcap\limits_{k\geq n} A_n=\lim_{x\to\infty} C_n$
+    \item $\limsup_{x\to\infty} A_n= \large\bigcap\limits_{n=1}^{+\infty} \bigcup\limits_{k\geq n} A_n=\lim_{x\to\infty} D_n$
+\end{itemize}
+
+Dove $(D_n)_{n\in\mathbb{N}}=\bigcup\limits_{k\geq n} A_n$ e $(C_n)_{n\in\mathbb{N}}=\bigcap\limits_{k\geq n} A_n$
+
+\begin{example}
+    $\Omega=[-1,1]$ , $\mathscr{F}=\mathscr{P}(\Omega)$ e sia $(A_n)_{n\in\mathbb{N}} = (0,1)$ se n è  \textbf{pari} e $(A_n)_{n\in\mathbb{N}} = (0,\frac{1}{n})$ se n è  \textbf{dipari}. Si ottiene:
+    \begin{itemize}
+        \item $\limsup_{x\to\infty} A_n= (0,1)$
+        \item $\liminf_{x\to\infty} A_n= \emptyset$
+    \end{itemize}
+    Dunque $(A_n)_{n\in\mathbb{N}}$ \textbf{non} ammette limite.
+\end{example}
+\newpage
+Contrariamente si osserva una successione \textit{dotata} di limite nel seguente esempio.
+\begin{example}
+     $\Omega=[-1,1]$ , $\mathscr{F}=\mathscr{P}(\Omega)$ e sia $(A_n)_{n\in\mathbb{N}} = \emptyset$ se n è  \textbf{pari} e $(A_n)_{n\in\mathbb{N}} = (0,\frac{1}{n})$ se n è  \textbf{dipari}. Si ottiene:
+    \begin{itemize}
+        \item $\limsup_{x\to\infty} A_n= \emptyset$
+        \item $\liminf_{x\to\infty} A_n= \emptyset$
+    \end{itemize}
+    Dunque $(A_n)_{n\in\mathbb{N}}$ \textbf{ammette} limite.
+\end{example}
+
+Si enuncia ora un importante teorema che lega la $\sigma$-additività alla continuità di $\mathbb{P}$.
+
+\begin{theorem}
+   Sia $(\Omega,\mathscr{F})$ uno spazio misurabile e $\mathbb{P}:\mathscr{F}\longrightarrow\mathbb{R}$ una funzione tale che:
+   \begin{itemize}
+       \item $\mathbb{P}(\Omega)=1$
+       \item $\mathbb{P}(A)\geq0$
+   \end{itemize}
+   Vale:
+   \begin{center}
+       $\mathbb{P}$ è $\sigma$-additiva $\iff$ $\mathbb{P}$ è continua e finito additiva
+   \end{center}
+   
+\begin{proof}
+$\Rightarrow)$ Divido questa implicazione in 4 passi:
+\begin{enumerate}
+\item Sia $(C_n)_{n\in\mathbb{N}}\subseteq\Omega$ successione decrescente a $\emptyset$, posso dunque riscrivere:
+\begin{center}
+    $C_n=\bigcup\limits_{k=n}^{+\infty}(C_k\cap C_{k+1}^c)$
+\end{center}
+Così facendo osservo che, grazie alla $\sigma$-additività:
+\begin{center}
+    $\sum\limits_{k=1}^{+\infty}(C_k\cap C_{k+1}^c)=\mathbb{P}(\bigcup\limits_{k=1}^{+\infty}(C_k\cap C_{k+1}^c))=\mathbb{P}(C_1)\leq1$
+\end{center}
+ Dunque $\sum\limits_{k=1}^{+\infty}(C_k\cap C_{k+1}^c)$ converge e:
+\begin{center}
+    $\lim_{n\to+\infty}\mathbb{P}(C_n)=\lim_{n\to+\infty}\mathbb{P}(\bigcup\limits_{k=n}^{+\infty}(C_k\cap C_{k+1}^c))=$
+    \newline
+    $\lim_{n\to+\infty}\sum\limits_{k=n}^{+\infty}\mathbb{P}(C_k\cap C_{k+1}^c)=\lim_{n\to+\infty}\sum\limits_{k=1}^{+\infty}\mathbb{P}(C_k\cap C_{k+1}^c)-\sum\limits_{k=1}^{n-1}\mathbb{P}(C_k\cap C_{k+1}^c)=0$
+\end{center}
+Ottenendo così la continuità di $\mathbb{P}$, con limite tendente a zero, rispetto a successioni decrescenti all'inseme vuoto.
+\label{T3_1}
+\item Sia $(D_n)_{n\in\mathbb{N}}\subseteq\Omega$ successione decrescente a $D$, posso dunque riscrivere:
+\begin{center}
+    $C_n=D_n\cap D^c$ cioè $D_n=C_n\cup D$
+\end{center}
+Ottenendo $(C_n)$ decrescente all'insieme vuoto e $(D_n)$ riscritta in funzione di insiemi disgiunti. Usando \ref{T3_1}:
+\begin{center}
+    $\lim_{n\to+\infty}\mathbb{P}(D_n)=\lim_{n\to+\infty}\mathbb{P}(C_n\cup D)=\lim_{n\to+\infty}\mathbb{P}(C_n)+\mathbb{P}(D)=$
+\vspace{7px}    
+\newline
+    $=\lim_{n\to+\infty}\mathbb{P}(D)=\mathbb{P}(\lim_{n\to+\infty}D_n)$
+\end{center}
+Ottendendo la continuità di $\mathbb{P}$ per una successione decrescente.
+\item Sia $(B_n)_{n\in\mathbb{N}}\subseteq\Omega$ successione crescente a $B$. Osservo che $(B_n^c)_{n\in\mathbb{N}}$ è una successione decrescente a $B^c$, quindi:
+\begin{center}
+         $\lim_{n\to+\infty}\mathbb{P}(B_n)=\lim_{n\to+\infty}(1-\mathbb{P}(B_n^c))=1-\lim_{n\to+\infty}\mathbb{P}(B_n^c)=$
+         \vspace{7px}
+         \newline
+         $1-\mathbb{P}(B^c)=\mathbb{P}(B)=\mathbb{P}(\lim_{n\to+\infty}B_n)$
+\end{center}
+Ottenendo la continuità di $\mathbb{P}$ per una successione crescente.
+\item Sia $(A_n)_{n\in\mathbb{N}}$ una successione che ammette limite $A$, vale:
+\begin{center}
+    $\bigcap\limits_{k\geq n}A_k\subseteq A_n\subseteq\bigcup\limits_{k\geq n}A_k$
+\end{center}
+Sfruttando la monotonia di $\mathbb{P}$:
+\begin{center}
+    $\mathbb{P}(\bigcap\limits_{k\geq n}A_k)\leq\mathbb{P}(A_n)\leq\mathbb{P}(\bigcup\limits_{k\geq n}A_k)$
+\end{center}
+Osservo che $(\bigcap\limits_{k\geq n}A_k)$ e $(\bigcup\limits_{k\geq n}A_k)$ sono due successioni rispettivamente decrescenti e crescenti. Passando al limite:
+\begin{center}
+    $\lim_{n\to +\infty}\mathbb{P}(\bigcap\limits_{k\geq n}A_k)\leq\lim_{n\to +\infty}\mathbb{P}(A_n)\leq\lim_{n\to +\infty}\mathbb{P}(\bigcup\limits_{k\geq n}A_k)$
+\end{center}
+\begin{center}
+    $\mathbb{P}(\lim_{n\to +\infty}\bigcap\limits_{k\geq n}A_n)\leq\lim_{n\to +\infty}\mathbb{P}(A_n)\leq\mathbb{P}(\lim_{n\to +\infty}\bigcup\limits_{k\geq n}A_n)$
+\end{center}
+\begin{center}
+    $\mathbb{P}(\liminf_{n\to +\infty}A_n)\leq\lim_{n\to +\infty}\mathbb{P}(A_n)\leq\mathbb{P}(\limsup_{n\to +\infty}A_n)$
+\end{center}
+Poichè $(A_n)$ è dotata di limite: $\liminf_{n\to +\infty}A_n=\limsup_{n\to +\infty}A_n=A$.
+Infine si ottiene:
+\begin{center}
+    $\lim_{n\to +\infty}\mathbb{P}(A_n)=\mathbb{P}(lim_{n\to +\infty}A_n)$
+\end{center}
+\end{enumerate}
+$\Leftarrow)$ Sia $(A_n)_{n\in\mathbb{N}}$ una successione tale che $A_i\cap A_j=\emptyset$ $\forall i\neq j$. Usando la finito additività:
+\begin{center}
+    $\mathbb{P}(\bigcup\limits_{n=1}^{+\infty}A_n)=\mathbb{P}(\bigcup\limits_{n=1}^{k-1}A_n\cup\bigcup\limits_{n=k}^{+\infty}A_n)=\sum\limits_{n=1}^{k-1}\mathbb{P}(A_n) + \mathbb{P}(\bigcup\limits_{n=k}^{+\infty}A_n)$
+\end{center}
+Osservo ora che $C_k=\bigcup\limits_{n=k}^{+\infty}A_n$ è una successione decrescente a $\emptyset$, poichè grazie alla disgiunzione dei suo elementi:
+\begin{center}
+    $\forall\omega\in C_1$ $\exists\hat{k}$ t.c. $\omega\in C_{\hat{k}}$ $\Rightarrow$ $\omega\notin C_h$ $h\geq\hat{k}$
+\end{center}
+Dunque passando al limite e sfruttando la continuità di $\mathbb{P}$:
+\begin{center}
+    $\lim_{k\to+\infty}\mathbb{P}(\bigcup\limits_{n=1}^{+\infty}A_n)=\lim_{k\to+\infty}(\sum\limits_{n=1}^{k}\mathbb{P}(A_n) + \mathbb{P}(\bigcup\limits_{n=k}^{+\infty}A_n))=$
+    \vspace{7px}
+    \newline
+    $\sum\limits_{n=1}^{+\infty}\mathbb{P}(A_n) + \mathbb{P}(\lim_{k\to+\infty}(\bigcup\limits_{n=k}^{+\infty}A_n))=\sum\limits_{n=1}^{+\infty}\mathbb{P}(A_n) + \mathbb{P}(\lim_{k\to+\infty}C_n))=\sum\limits_{n=1}^{+\infty}\mathbb{P}(A_n)$
+\end{center}
+Si conclude così la $\sigma$-additività di $\mathbb{P}$.
+\end{proof}
+\end{theorem}

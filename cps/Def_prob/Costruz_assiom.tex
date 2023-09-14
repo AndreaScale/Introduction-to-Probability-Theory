@@ -1,0 +1,162 @@
+\section{Assiomi della Probabilità}
+\subsection{Definizione assiomatica di Probabilità}
+Si deve la prima costruzione assiomatica della probabilità moderna ad A.N. Kolmogorov che nel 1933 pose le basi della teoria della probabilità. Egli stabilì gli assiomi che definiscono la probabilità di un dato evento in un esperimento probabilistico.
+
+Iniziamo dando alcune definizioni preliminari.
+\begin{definition}
+Sia \(\Omega\) un insieme e sia $\mathscr{F}$ e una famiglia di sottoinsiemi di \(\Omega\), si dice che $\mathscr{F}$ è un'\textbf{algebra} se:
+\begin{itemize}
+    \item $\Omega\in\mathscr{F}$
+    \item $\forall A \in \mathscr{F} \Rightarrow A^c \in \mathscr{F}$
+    \item $A,B \in \mathscr{F} \Rightarrow A \cup B \in \mathscr{F}$          
+\end{itemize}
+\end{definition}
+\noindent
+Si osserva dunque che un'algebra è chiusa rispetto alla \textit{complementazione} e all'\textit{unione finita}.
+\begin{definition}
+Sia \(\Omega\) un insieme e sia $\mathscr{F}$ e una famiglia di sottoinsiemi di \(\Omega\), si dice che $\mathscr{F}$ è una \textbf{sigma-algebra} (\textbf{$\sigma$-algebra}) se:
+\begin{itemize}
+    \item $\Omega\in\mathscr{F}$
+    \item $\forall A \in \mathscr{F} \Rightarrow A^c \in \mathscr{F}$
+    \item $\{A_i\}_{i=1}^{+\infty}$ t.c. $A_i \in \mathscr{F} \Rightarrow \bigcup\limits_{i=1}^{+\infty} A_i \in \mathscr{F}$ 
+\end{itemize}
+\end{definition}
+\noindent
+Una \textit{$\sigma$-algebra} è dunque un'\textit{algebra} con chiusura rispetto all'unione \textit{numerabile}.
+
+\begin{example}
+Le seguenti sono $\sigma$-algebre:
+\begin{itemize}
+    \item $\mathscr{F} = \{\Omega , \emptyset\}$ Banale
+    \item $\mathscr{F} = \mathscr{P}(\Omega)$ Discreta
+\end{itemize}
+\end{example}
+
+\begin{proposition}
+\label{prop.3.1}
+$\{\mathscr{F}_i\}_{i\in I}$ con $\mathscr{F}_i$ $\sigma$-algebra $\forall$i $\Rightarrow \bigcap\limits_{i\in I}\mathscr{F}_i $ è una $\sigma$-algebra.   
+\end{proposition}
+La proposizione \ref{prop.3.1} ci permette di dare la seguente definizione.
+\begin{definition}
+Sia $\Omega$ un insieme e $\mathscr{C}$ una collezione di sottoinsiemi di $\Omega$. Siano $\mathscr{F}_i$ tutte le $\sigma$-algebre contenenti $\mathscr{C}$, si definisce:
+\begin{center}
+\begin{displaymath}
+  \sigma(\mathscr{C})=\bigcap\limits^n_{i=1}\mathscr{F}_i
+\end{displaymath}    
+\end{center}
+\`E la \textbf{$\sigma$-algebra generata} da $\mathscr{C}$.
+\end{definition}
+
+La $\sigma$-algebra generata da una famiglia di sottoinsiemi di $\Omega$ è unica, infatti se ve ne fossero due si includerebbero a vicenda, in quanto entrambe sarebbero le $\sigma$-algebre più piccole contenenti la famiglia di sottoinsiemi. 
+
+\begin{definition}
+Un \textbf{evento} è un elemento di una $\sigma$-algebra.
+\end{definition}
+
+\begin{definition}
+Sia $\Omega$ un insieme e $\mathscr{F}$ una $\sigma$-algebra su $\Omega$. La coppia $(\Omega , \mathscr{F})$ è detta \textbf{spazio misurabile}.
+\end{definition}
+
+\begin{example}
+Un esempio di \textit{spazio misurabile} è lo spazio campionario di Bernoulli dotato dell'insieme delle parti:
+\begin{center}
+    $\Omega=\{\omega=(\omega_1,\omega_2,\omega_3,...) | \omega_i \in \{0,1\}$ per $i\in\mathbb{N}^*\}$
+\end{center}
+\end{example}
+\begin{example}
+Un altro esempio è $\mathbb{R}$ con la $\sigma$-algebra dei \textbf{boreliani}, denotata con $\mathcal{B}(\mathbb{R})$. Dunque:
+\begin{itemize}
+    \item $\Omega=\mathbb{R}$
+    \item $\mathscr{H}=\{(a,b)\subseteq\mathbb{R}$ $|$ $a<b \}$
+\end{itemize}
+La $\sigma$-algebra dei boreliani è definibile su ogni spazio topologico, prendendo tutti gli aperti di esso come famiglia di sottoinsiemi.
+
+\begin{observation}
+Se si prende $\mathscr{H}'=\{(-\infty$, a ] , a $\in\mathbb{R}\}$ allora $\sigma(\mathscr{H})=B(\mathbb{R})$, infatti:
+\newline
+$\subseteq$ : $(-\infty, a]=(a, b)^c\in B(\mathbb{R})$
+\newline
+$\supseteq$ : $(a, b)=(-\infty , a]^c\cap(-\infty , b)=\{(-\infty , a]^c\cap(\bigcup\limits_{i=1}^{+\infty}(-\infty , b_i])\}\in\sigma(\mathscr{H}')$ 
+
+Prendendo una successione tale che $b_i\rightarrow b$.
+\end{observation}
+\end{example}
+\vspace{10px} 
+Possiamo ora, finalmente, definire la \textit{misura di probabilità} di un evento.
+\begin{definition}
+Dato uno spazio misurabile $(\Omega , \mathscr{F})$, una funzione d'insieme
+\newline
+$\mathbb{P}:\mathscr{F}\longrightarrow\mathbb{R}$ tale che:
+\begin{itemize}
+    \item $\forall A\in\mathscr{F} , \mathbb{P}(A)\geq0$
+    \item $\mathbb{P}(\Omega)=1$
+    \item $\{A_n\}_{n\in\mathbb{N}}\subseteq\mathscr{F}$ $|$ $A_i\cap A_j=\emptyset$  $\forall i\neq j \Rightarrow \mathbb{P}(\bigcup\limits^{+\infty}_{i=1}A_i)=\sum\limits_{i=1}^{+\infty}\mathbb{P}(A_i)$
+\end{itemize}
+\`E detta \textbf{misura di probabilità}.
+\end{definition}
+
+Si osserva che valgono le propietà dell'osservazione \ref{obs.1.2}, seppur derivate leggermente differentemente.
+\vspace{5px}
+
+E inoltre vale la proprietà: 
+\begin{equation}
+    \mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)
+    \label{Base_ind_T1}
+\end{equation} 
+
+
+La cui dimostrazione è lasciata al lettore. (zero sbatta oggi)
+
+\vspace{10px}
+\begin{theorem}[Principio di inclusione-esclusione]
+Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio \newline probabilistico e siano $A_1,A_2,...,A_n$ eventi:
+\begin{center}
+    $\mathbb{P}(\bigcup\limits\limits_{i=1}^n A_i)= \sum\limits_{i=1}^n \mathbb{P}(A_i) - \sum\limits_{i\leq j}^n\mathbb{P}(A_i\cap A_j) + \sum\limits_{i\leq j\leq k}^n\mathbb{P}(A_i\cap A_j\cap A_k) - ...$
+    \newline
+    $... (-1)^{n+1}\mathbb{P}(\bigcap\limits_{i=i}^nA_i)$
+\end{center}
+\newpage
+\begin{proof}
+Si procede per induzione su n.
+\newline
+Base induzione: è \ref{Base_ind_T1}.
+\newline
+Passo induttivo: Assumiamo vera l'implicazione per n. Applicando la propietà \ref{Base_ind_T1} ottengo:
+\begin{center}
+            $\mathbb{P}(\bigcup\limits\limits_{i=1}^{n+1} A_i)=\mathbb{P}(\bigcup\limits\limits_{i=1}^n A_i \cup A_{n+1})=\mathbb{P}(\bigcup\limits_{i=1}^nA_i)+\mathbb{P}(A_{n+1})-\mathbb{P}((\bigcup\limits_{i=1}^n A_i) \cap (A_{n+1}))$
+\end{center}
+\label{T1_EQ_1}
+Osservo ora che al primo addendo posso applicare l'ipotesi induttiva. Mentre rispetto all'ultimo addendo:
+\begin{center}
+    $\mathbb{P}((\bigcup\limits_{i=1}^n A_i) \cap (A_{n+1}))=\mathbb{P}(\bigcup\limits_{i=1}^n (A_i \cap A_{n+1}))$
+\end{center}
+Applicando nuovamente l'ipotesi induttiva:
+\begin{center}
+    $\mathbb{P}(\bigcup\limits_{i=1}^n (A_i \cap A_{n+1}))=\sum\limits_{i=1}^n \mathbb{P}(A_i\cap A_{n+1}) - \sum\limits_{i\leq j}^n\mathbb{P}(A_i\cap A_j\cap A_{n+1}) +$
+    \newline
+    $+ \sum\limits_{i\leq j\leq k}^n\mathbb{P}(A_i\cap A_j\cap A_k\cap A_{n+1}) - ...  (-1)^{n+1}\mathbb{P}(\bigcap\limits_{i=i}^{n+1}A_i)$
+\end{center}
+Dunque osservando che:
+\begin{center}
+    $\sum\limits_{i\leq j}^{n+1}\mathbb{P}(A_i\cap A_j)=\sum\limits_{i\leq j}^n\mathbb{P}(A_i\cap A_j)+\sum\limits_{i=1}^n\mathbb{P}(A_i\cap A_{n+1})$
+\end{center}
+E questo vale per tutti gli addendi successivi.
+
+Sostituendo nella prima equazione e raggruppando le sommatorie ottengo la tesi.
+\end{proof}
+\end{theorem}
+
+\begin{theorem}[Disuguaglianza di Boole]
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio misurabile e $\{A_n\}_{n=1}^{+\infty}$ una successione di eventi, allora:
+    \begin{center}
+        $\mathbb{P}(\bigcup\limits_{n=1}^{+\infty}A_n) \leq \sum\limits_{n=1}^{+\infty}\mathbb{P}(A_n)$
+    \end{center}
+\begin{proof}
+$\bigcup\limits_{n=1}^{+\infty}A_n=A_1\cup(A_1^c\cap A_2)\cup(A_1^c\cap A_2^c\cap A_3)\cup ...$
+
+Si osserva che è un'unione disgiunta, e grazie alla monotonia di $\mathbb{P}$ posso concludere:
+\begin{center}
+    $\mathbb{P}(\bigcup\limits_{n=1}^{+\infty}A_n)=\mathbb{P}(A_1)+\mathbb{P}(A_1^c\cap A_2)+\mathbb{P}(A_1^c\cap A_2^c\cap A_3)+...\leq \sum\limits_{n=1}^{+\infty}A_n$
+\end{center}
+\end{proof}
+\end{theorem}

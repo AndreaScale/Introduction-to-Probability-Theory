@@ -1,0 +1,70 @@
+\section{Test delle ipotesi}
+
+Ultimo metodo inferenziale che si presenta, oltre alla stima puntuale e intervallare, è il \textit{test delle ipotesi}. La seguente introduzione sarà priva della classica suddivisione \textit{definizione-commento}, preferendo una trattazione leggermente più discorsiva.
+
+Iniziamo a sottolineare che:
+\begin{center}
+    \FirstLine{un'ipotesi è fatta su una popolazione.}
+\end{center}
+
+Infatti l'obiettivo del metodo è di stabilire, basandosi su un campione osservato, quale di due ipotesi complementari è vera.
+\vspace{5px}
+Le due ipotesi complementari sono dette:
+\begin{itemize}
+    \item $H_0$ : $\Tt\in\Theta_0$ ipotesi \textbf{nulla}
+    \item $H_1$ : $\Tt\in\Theta_1$ ipotesi \textbf{alternativa}
+\end{itemize}
+Dove $\Theta_0,\Theta_1$ sono sottoinsiemi disgiunti dello spazio dei parametri ($\Theta$). Inoltre le ipotesi si dicono \textbf{semplici} se $H_0$ : $\Tt = \Tt_0$ e/o $H_1$ : $\Tt = \Tt_1$. Si dicono \textbf{composte} altrimenti.
+
+Dunque un test delle ipotesi, dopo aver raccolto un campione statistico, deve stabilire se valutare $H_0$ come vera e $H_1$ come falsa o viceversa. Così facendo, il test partiziona lo spazio dei campioni in:
+\begin{itemize}
+    \item $C$ Regione di \textbf{rifiuto}
+    \item $C^c$ Regione di \textbf{accettazione}
+\end{itemize}
+
+Nel decidere se accettare o meno l'ipotesi nulla si può incorrere in errori, ed è proprio in base alla probabilità di effettuarli che si valutano e comparano i test.
+
+Si distiguono subito due tipologia di errore:
+\begin{enumerate}
+    \item Se $\Tt\in\Theta_0$ ma il test rifiuta $H_0$ allora si è commesso un errore \textbf{del primo tipo} : $\{\underline{X}\in C ; \Tt\in\Theta_0\}$
+    \item Se $\Tt\in\Theta_1$ ma il test accetta $H_0$ allora si è commesso un errore \textbf{del secondo tipo} : $\{\underline{X}\in C^c ; \Tt\in\Theta_1\}$
+\end{enumerate}
+Poichè gli errori sono eventi possiamo definire le probabilità: $\alpha = \mathbb{P}(\{\underline{X}\in C ; \Tt\in\Theta_0\})$ e $\beta = \mathbb{P}(\{\underline{X}\in C^c ; \Tt\in\Theta_1\})$.
+\vspace{5px}
+Si osserva subito che $\alpha = 1 - \beta$, dando senso alla definizione di \textbf{potenza del test}:
+\[\Pi(\Tt)=\mathbb{P}(\underline{X}\in C ; \Tt\in\Theta) = \left\{
+     \begin{array}{lr}
+       \alpha &  \Tt \in \Theta_0\\
+       1-\beta &  \Tt\in\Theta_1
+     \end{array}
+   \right.\]
+   
+Altro parametro che fornisce importanti informazioni su di un test è la sua \textbf{ampiezza}: \[\Tilde{\alpha}=\sup\limits_{\Tt\in\Theta_0}\Pi(\Tt)\]   
+Come ultima caratterizzazione di un test ci soffermiamo sul concetto di test \textit{più potente}.
+   
+\begin{definition}
+   Un test $Y$ di ampiezza $\Tilde{\alpha}$ per $H_0$ e $H_1$ si dice \textbf{più potente} se per ogni altro test $Y'$ di ampiezza $\Tilde{\alpha}'\leq\Tilde{\alpha}$ si ha: $\beta'(\Tt)\geq\beta(\Tt)$ per ogni $\Tt\in\Theta_1$
+\end{definition}
+   
+   
+Al fine di determinare la regione critica di una test, fissata la sua ampiezza, ci viene in aiuto il seguente teorema.
+
+\begin{theorem}[Lemma di Neymann-Pearson]
+Sia $\underline{X}$ un c.c. di taglia $n$ estratto da una genitrice parametrizzata da $\Tt$, e sia $L(\Tt)$ la funzione di verosimiglianza associata. Il test più potente di ampiezza $\alpha$ per verificare $H_0 : \Tt=\Tt_0$ e $H_1 : \Tt=\Tt_1$ è quello avente come regione critica: \[C=\bigg\{(x_1,...,x_n) : \frac{L(\Tt_0)}{L(\Tt_1)}\leq k\bigg\}\]
+Dove $k>0$ tale che il test abbia ampiezza $\alpha$.
+\begin{proof}
+Sia $C$ la regione critica della tesi: $\mathbb{P}(\underline{X}\in C ; H_0 vera)=\alpha$:
+\newline 
+Poniamo invece $D$ come una regione critica qualunque di ampiezza $\alpha$ e dimostriamo che $C$ ha probabilità dell'errore di seconda specie minore. Valutiamo $\alpha$:
+\[\alpha=\int...\int_C L(\Tt_0) \,dx_1...dx_n = \int...\int_D L(\Tt_0) \,dx_1...dx_n  \]
+Ricordando $C=(C\cap D)\cup(C\cap D^c)$ l'uguaglianza sopra è equivalente a:
+\[\int...\int_{C\cap D^c} L(\Tt_0) \,dx_1...dx_n =\int...\int_{D\cap C^c} L(\Tt_0) \,dx_1...dx_n =  \]
+Sfruttando ora l'ipotesi su $C$, e la conseguente ipotesi cu $C^c$:
+\[\int...\int_{C\cap D^c} L(\Tt_1) \,dx_1...dx_n \geq \int...\int_{C\cap D^c} \frac{L(\Tt_0)}{k} \,dx_1...dx_n = \]
+\[\int...\int_{D\cap C^c} \frac{L(\Tt_0)}{k} \,dx_1...dx_n \geq \int...\int_{D\cap C^c} L(\Tt_1) \,dx_1...dx_n\]
+Ottenendo così: \[\int...\int_C L(\Tt_1) \,dx_1...dx_n\geq\int...\int_{D\cap C^c} L(\Tt_1) \,dx_1...dx_n + \int...\int_{C\cap D} L(\Tt_1) \,dx_1...dx_n\]
+Dunque: \[\mathbb{P}(\underline{X}\in C ; H_1 vera) \geq \mathbb{P}(\underline{X}\in D ; H_1 vera)\]
+Cioè:\[1-\beta_c\geq 1-\beta_d\]
+E quindi la tesi.
+\end{proof}
+\end{theorem}

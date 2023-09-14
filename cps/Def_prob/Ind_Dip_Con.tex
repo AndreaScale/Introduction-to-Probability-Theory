@@ -1,0 +1,138 @@
+\subsection{Dipendenza, Indipendenza e Condizionamento}
+Si introducono qui i concetti di dipendenza, indipendenza e condizionamento.
+
+\begin{definition}
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio misurabile e $A,B\in\Omega$ due eventi, si dice che:
+    \begin{itemize}
+        \item $A$ e $B$ sono \textbf{indipendenti} se: $\mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P}(B)$
+        \item $\Omega$ è un evento \textbf{certo}
+        \item $\emptyset$ è un evento \textbf{impossibile}
+        \item $A$ è un evento \textbf{quasi-certo} se: $\mathbb{P}(A)=1$
+        \item $B$ è un evento \textbf{quasi-impossibile} se: $\mathbb{P}(B)=0$
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    Sia $A\in\mathscr{F}$ un evento, $A$ è indipendente da ogni evento quasi-certo e da ogni evento quasi-impossibile.
+    
+\noindent
+\begin{proof}
+\begin{center}
+    $\mathbb{P}(A\cap\Omega)=\mathbb{P}(A)=\mathbb{P}(A)\mathbb{P}(\Omega)$
+\end{center}
+\begin{center}
+    $\mathbb{P}(A\cap\emptyset)=\mathbb{P}(\emptyset)=0=\mathbb{P}(A)\mathbb{P}(\Omega)$
+\end{center}
+Sia $B$ un evento quasi-certo: $A=(A\cap B)\cup(A\cap B^c)$
+\begin{center}
+    $\mathbb{P}(A)=\mathbb{P}((A\cap B)\cup(A\cap B^c))=\mathbb{P}(A\cap B) + \mathbb{P}(A\cap B^c)$
+\end{center}
+Osservando che per monotonia di $\mathbb{P}$:
+\begin{center}
+    $0\leq\mathbb{\emptyset}\leq\mathbb{P}(A\cap B^c)\leq\mathbb{P}(B^c)=1-\mathbb{P}(B)=0$
+\end{center}
+Rimane:
+\begin{center}
+    $\mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P}(B)$
+\end{center}
+
+Analogamente, riscrivendo $C=(C\cap A)\cup(C\cap A^c)$, si dimostra per i quasi-impossibili.
+\end{proof}
+\end{proposition}
+
+\begin{proposition}
+    $A,B\in\mathscr{F}$ eventi indipendenti allora lo sono anche $(A,B^c)$ , $(A^c,B)$ , $(A^c,B^c)$.
+\end{proposition}
+
+Dimostrazione lasciata al lettore. (Usare $A=(A\cap B)\cup(A\cap B^c)$)
+
+
+\begin{definition}[Pairwise independence]
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio di probaibliltà e $\{{A_i}\}_{i=1}^{+\infty}$ una collezione numerabile di eventi. Si dice che gli eventi di $\{{A_i}\}_{i=1}^{+\infty}$ sono \textbf{due a due indipendenti} se:
+    \begin{center}
+        $\mathbb{P}(A_i\cap A_j)=\mathbb{P}(A_i)\mathbb{P}(A_j)$ $\forall i\neq j$
+    \end{center}
+\end{definition}
+
+\begin{definition}[Mutual independence]
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio di probaibliltà e $\{{A_i}\}_{i=1}^{+\infty}$ una collezione numerabile di eventi. Si dice che gli eventi di $\{{A_i}\}_{i=1}^{+\infty}$ sono \textbf{mutuamente indipendenti} se:
+    \begin{center}
+        $\mathbb{P}(A_{i,1}\cap A_{i,2}\cap ...\cap A_{i,k})=\mathbb{P}(A_{i,1})\mathbb{P}(A_{i,2})...\mathbb{P}(A_{i,k})$  $\forall k\in\mathbb{N}$ , $\forall(i_1,...,i_k) $
+    \end{center}
+\end{definition}
+
+\begin{observation}
+    Si osserva immediatamente che la mutua indipendenza implica l'indipendenza due a due.
+\end{observation}
+\newpage
+Non vale però l'inverso (le definizioni non sono equivalenti). Se per esempio si prende un'urna con tre biglietti: uno con il numero 1, uno con il numero 2 e uno con il numero 1 e 2. Posto $A_i$ come l'evento "uscita del numero i" allora:
+\begin{center}
+    $\mathbb{P}(A_1\cap A_2)=\frac{1}{3}$   mentre    $\mathbb{P}(A_1)\mathbb{P}(A_2)=\frac{1}{6}$
+\end{center}
+Dunque gli eventi \textit{non} sono mutuamente indipendenti, ma si dimostra essere indipendenti due a due.
+
+\begin{definition}
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio di probaibliltà e $A,B\in\mathscr{F}$ t.c. $\mathbb{P}(B)>0$ (non nulla). Si definisce la \textbf{probabilità di $A$ condizionata a $B$} come:
+    \begin{center}
+        $\mathbb{P}(A | B)=\mathbb{P}_B(A)=$\large$\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$
+    \end{center}
+\end{definition}
+
+\begin{proposition}
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio di probaibliltà e $A,B\in\mathscr{F}$ t.c. $\mathbb{P}(B),\mathbb{P}(A)>0$, si equivalgono:
+    \begin{enumerate}
+        \item $\mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P}(B)$
+        \item $\mathbb{P}_B(A)=\mathbb{P}(A)$
+        \item $\mathbb{P}_A(B)=\mathbb{P}(B)$
+    \end{enumerate}
+    \begin{proof}
+    
+La dimostrazione è banale e lasciata al lettore.
+    \end{proof}
+\end{proposition}
+
+\vspace{5px}
+
+\begin{proposition}
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio di probaibliltà e $B\in\mathscr{F}$ t.c. 
+    \newline
+    $\mathbb{P}(B)>0$, allora :
+    \begin{center}
+        $\mathbb{P}_B(\cdot)$ è una misura di probabilità.
+    \end{center}
+    \vspace{5px}
+\begin{proof}
+\begin{enumerate}
+    \item $\mathbb{P}_B(\Omega)=${\large$\frac{\mathbb{P}(\Omega\cap B)}{\mathbb{P}(B)}=\frac{\mathbb{P}(B)}{\mathbb{P}(B)}=1$}
+    \item $A\in\mathscr{F}$ dunque: $\mathbb{P}_B(A)=${\large$\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$}$\geq0$ in quanto rapporto di quantità non negative (per def. di $\mathbb{P}$)
+    \item $\{{A_i}\}_{i=1}^{+\infty}$ una successione di eventi disgiunti: 
+    \begin{center}
+        $\mathbb{P}_B(\bigcup\limits_{i=1}^{+\infty}{A_i})=${\large$\frac{\mathbb{P}(\bigcup\limits_{i=1}^{+\infty}{A_i}\cap B)}{\mathbb{P}(B)}=\frac{\sum\limits_{i=1}^{+\infty}\mathbb{P}(A_i\cap B)}{\mathbb{P}(B)}$}$=\sum\limits_{i=1}^{+\infty}\mathbb{P}_B(A_i)$
+    \end{center}
+\end{enumerate}
+\end{proof}    
+\end{proposition}
+\vspace{5px}
+
+\begin{theorem}[Formula delle probabilità totali]
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio di probaibliltà e $\{{A_i}\}_{i=1}^{+\infty}$ una partizione di $\Omega$ t.c. $\mathbb{P}(A_i)\geq0$ $\forall i$, allora vale:
+    \begin{center}
+        $\mathbb{P}(A)=\sum\limits_{i=1}^{+\infty}\mathbb{P}_{A_i}(A)\mathbb{P}(A_i)$ , $\forall A\in\mathscr{F}$
+    \end{center}
+\begin{proof}
+\begin{center}
+$\mathbb{P}(A)=\mathbb{P}(A\cap \Omega)=\mathbb{P}(A\cap\bigcup\limits_{i=1}^{+\infty}A_i)=\mathbb{P}(\bigcup\limits_{i=1}^{+\infty}A\cap A_i)=\sum\limits_{i=1}^{+\infty}\mathbb{P}(A\cap A_i)=\sum\limits_{i=1}^{+\infty}\mathbb{P}_{A_i}(A)\mathbb{P}(A_i)$
+\end{center}
+\end{proof}    
+\end{theorem}
+
+\begin{theorem}[Teorema di Bayes]
+    Sia $(\Omega,\mathscr{F},\mathbb{P})$ uno spazio di probaibliltà, $\{{A_i}\}_{i=1}^{+\infty}$ una partizione di $\Omega$ e $B\in\mathscr{F}$ vale:
+    \begin{center}
+        $\mathbb{P}_B(A_i)=${\large$\frac{\mathbb{P}_{A_i}(B)\mathbb{P}(A_i)}{\sum\limits_{i=1}^{+\infty}\mathbb{P}_{A_i}(B)\mathbb{P}(A_i)}$}
+    \end{center}
+\begin{proof}
+\vspace{5px}
+    \[\mathbb{P}_B(A_i)={\large\frac{\mathbb{P}(A_i\cap B)}{\mathbb{P}(B)}=\frac{\mathbb{P}_{A_i}(B)\mathbb{P}(A_i)}{\sum\limits_{i=1}^{+\infty}\mathbb{P}_{A_i}(B)\mathbb{P}(A_i)}}\]
+\end{proof}    
+\end{theorem}

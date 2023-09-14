@@ -1,0 +1,135 @@
+\subsection{Momento, Varianza e Covarianza}
+
+\begin{definition}
+Sia $X$ una v.a. a valori reali: 
+\begin{itemize}
+    \item $X$ ammette \textbf{momento di ordine} $k\in\mathbb{N}^*$ se $X^k$ è integrabie
+    \item $X$ ammette \textbf{momento centrato di ordine} $k\in\mathbb{N}^*$ se $(X-\mathbb{E}X)^k$ è integrabie
+\end{itemize}
+Si denotano:
+\begin{itemize}
+    \item Momento di $X$ di ordine $k$: $\mathbb{E}X^k$
+    \item Momento centrato di $X$ di ordine $k$: $\mathbb{E}(X-\mathbb{E}X)^k$
+\end{itemize}
+\end{definition}
+
+\vspace{10px}
+
+\begin{definition}
+Sia $X$ v.a. a valori reali, si definisce \textbf{varianza} il momento centrato di $X$ di ordine 2:
+\begin{center}
+    $\mathbb{V}_{AR}X=\mathbb{E}(X-\mathbb{E}X)^2$
+\end{center}
+\end{definition}
+\vspace{5px}
+\noindent
+Si osserva subito che: $\mathbb{V}_{AR}X=\mathbb{E}X^2-(\mathbb{E}X)^2$
+
+\vspace{10px}
+
+\begin{definition}
+Siano $X,Y$ v.a. a valori reali, si definisce \textbf{covarianza}:
+\begin{center}
+    $\mathbb{C}_{OV}(X,Y)=\mathbb{E}[(X-\mathbb{E}X)(Y-\mathbb{E}Y)]$
+\end{center}
+\end{definition}
+
+\vspace{15px}
+
+\noindent
+Una prima importante considerazione da fare è che:
+
+\begin{proposition}
+$X$ v.a. ha momento di ordine $k$ finito allora $X$ ha momento di ordine $r$ \hspace{3px} $\forall r\leq k$ 
+\begin{proof}
+$|X|^r\leq|X|^k+1 \Rightarrow \mathbb{E}|X|^r\leq\mathbb{E}|X|^k+1$ 
+\end{proof}
+\end{proposition}
+
+\vspace{10px}
+\noindent
+
+Di fondamentale importanza, per la caratterizzazione che fornisce dell'operatore $\mathbb{V}_{AR}$, è il seguente teorema.
+
+
+\newcommand{\V}{\mathbb{V}_{AR}}
+\newcommand{\C}{\mathbb{C}_{OV}}
+\newcommand{\E}{\mathbb{E}}
+
+\begin{theorem}
+Siano $X,Y$ v.a. unidimensionali a valori reali e sia $a\in\mathbb{R}$ allora:
+\begin{enumerate}
+    \item $\V(aX)=a^2\V X$
+    \item $\V(X+a)=\V X$
+    \item $\V(X+Y)=\V X+\V Y+2\C(X,Y)$
+\end{enumerate}
+\begin{proof}
+Dimostriamo nell'ordine, ricordando la linearità di $\E$:
+\vspace{10px}
+\newline
+\noindent
+$1.)$ $\V(aX)=\E(aX-\E(aX))^2=\E(a^2(X-\E X)^2)=a^2\V X$
+\vspace{12px}
+\newline
+\noindent
+$2.)$ $\V(X+a)=\E(X+a-\E(X+a))^2=\E(X+a-\E(X)-a)^2=\V X$
+\vspace{1px}
+\newline
+\noindent
+$3.)$ $\V(X+Y)=\E(X+Y-\E(X+Y))^2=\E((X-\E X)+(Y-\E Y))^2=$
+\vspace{5px}
+\newline
+\noindent
+$\E(X-\E X)^2+\E(Y-\E Y)^2+2\E((X-\E X)(Y-\E Y))=$
+\vspace{5px}
+\newline
+\noindent
+$\V X+\V Y+2\C(X,Y)$
+\end{proof}
+\end{theorem}
+
+\vspace{10px}
+Inoltre nel caso in cui $X$ e $Y$ siano \textit{indipendenti} risulta $\C(X,Y)=0$ e dunque:
+\begin{center}
+    $\V(X+Y)=\V X+\V Y$
+\end{center}
+
+\vspace{15px}
+
+Si introduce ora un'importante funzione nell'ambito dei momenti:
+
+\begin{definition}
+Sia $X$ v.a. unidimensionale a valori reali si definisce la \textbf{funzione generatrice dei momenti} come:
+\begin{center}
+    $m_X(t):\mathbb{R}\longrightarrow\mathbb{R}$ \hspace{3px} t.c. \hspace{3px} $m_X(t)=\E e^{tX}$
+\end{center}
+\end{definition}
+
+\vspace{10px}
+
+Si osserva che si può stabilire il momento di X di un certo ordine $k$ tramite la sua funzione generatrice dei momenti:
+\begin{center}
+    $m_X(t)=\sum\limits_ie^{tx_i}\mathbb{P}(X=x_i)=\sum\limits_i\sum\limits_{k=0}^{+\infty}$ {\large$\frac{(tx_i)^k}{k!}$} 
+    $\mathbb{P}(X=x_i)=$
+    \newline
+    $\sum\limits_i\sum\limits_{k=0}^{+\infty}$ {\large$\frac{(t)^k}{k!}$} 
+    $x_i^k\mathbb{P}(X=x_i)=\sum\limits_{k=0}^{+\infty}$ {\large$\frac{(t)^k}{k!}$} $\E X^k$
+\end{center}
+
+Dunque per la serie di Taylor: $\E X^k=$ {\Large$\frac{\mathrm d^k}{\mathrm d t^k}$}
+$\left( m_X(t) \right)|_{t=0}$
+
+\vspace{15px}
+
+Altra caratterizzazione importante è data dalla seguente proposizione.
+
+\begin{proposition}
+$X,Y$ v.a. indipendenti allora: $m_{(X+Y)}(t)=m_X(t)m_Y(t)$
+\begin{proof}
+$m_{(X+Y)}(t)=\E e^{t(X+Y)}=\E (e^{tX}e^{tY})=\E e^{tX}\E e^{tY}=m_X(t)m_Y(t)$
+\end{proof}
+\end{proposition}
+
+\vspace{5px}
+
+Un esempio dell'importanza e utilità della funzione generatrice dei momenti è data proprio dalla propietà appena dimostrata. Si consiglia di provare a determinare la distribuzione di probabilità della somma di due Poisson di parametro differente tramite la funzione generatrice dei momenti (trovando dunque la Poisson della somma dei parametri).

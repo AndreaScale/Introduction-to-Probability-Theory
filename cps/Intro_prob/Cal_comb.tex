@@ -1,0 +1,84 @@
+\section{Calcolo Combinatorio}
+
+Si farà ora un breve excursus su alcune delle fondamentali operazioni di calcolo combinatorio, che serviranno lungo tutto l'arco del corso.
+
+Tratteremo in particolare le:
+\begin{enumerate}
+    \item Permutazioni
+    \item Disposizioni
+    \item Disposizioni con ripetizione 
+    \item Combinazioni
+    \item Combinazioni con ripetizione
+    \label{enumerate:Permutazioni}
+    \label{enumerate:Disposizioni}
+    \label{enumerate:Disposizioni con ripetizione}
+    \label{enumerate:Combinazioni}
+    \label{enumerate:Combinazioni con ripetizione}
+\end{enumerate}
+
+\subsection{Permutazioni}
+Sia (1,2,3,...,n) una sequenza ordinata di elementi. L'operazione di permutazione consiste nel riordinare gli elementi della sequenza.
+\vspace{10px}
+\newline
+\textit{N.B.} La soprastante non ha alcuna itenzione di essere una definizione rigorosa, ma risulta sufficiente per gli scopi del corso.
+\vspace{5px}
+\newline
+Il numero di possibili permutazioni di una sequenza di n numeri è: 
+\begin{center}
+    \scalebox{1.2}{\(\Pi_n=n!\)}
+\end{center}
+
+\subsection{Disposizioni}
+Sia A un insieme di \(n\geq1\) elementi distinti. Si estraggono da A delle sequenze ordinate di lunghezza \(k\leq n\), senza possibilità di ripere gli elementi.
+
+\begin{example}
+\(A=\{ a,b,c \}\)  Dato il seguente insieme delle \textit{disposizioni} di lunghezza \(k=2\) sono per esempio: \((a,b)\) , \((c,b)\) , \((a,c)\)
+\end{example}
+
+Si denota con \(D_{n,k}=\#\) sequenze ordinate di \(k\) elementi scelti dagli \(n\) disponibili, e vale:
+\begin{center}
+    \scalebox{1.2}{\(D_{n,k}=\frac{n!}{(n-k)!}\)}
+\end{center}
+
+Questo risultato deriva dal fatto che vi siano \(k\) posti nei quali le opzioni di scelta degli elementi si riducono di uno sino al k-esimo posto. Si considera dunque il fattoriale di \(n\) troncato da \(n-k\).
+
+Si può anche intendere \(D_{n,k}\) come il numero di permutazioni di \(n\) diviso il numero di permutazioni degli elementi non estratti.
+\subsection{Disposizioni con ripetizione}
+Sia A un insieme di \(n\geq1\) elementi distinti. Si estraggono da A delle sequenze ordinate, con possibilità di ripere gli elementi.
+
+In questo caso non è detto che \(k\leq n\), si scrive quindi che: \(k\in \mathbb{N}^*\)\footnote{\(\mathbb{N}^*=\{ 1,2,3,...\}\) numeri naturali senza lo zero}.
+\vspace{5px}
+\begin{example}
+\(A=\{ a,b\}\) e \(k=3\) alcune possibili combinazioni sono: \((a,a,a)\)  \((b,b,a)\) , \((a,a,b)\)
+\end{example}
+\vspace{10px}
+Denotato con \(D'_{n,k}\) il numero di disposizioni con ripetizione di lunghezza k da n elementi, si ha:
+\begin{center}
+    \scalebox{1.2}{\(D'_{n,k}=n^k\)}
+\end{center}
+\vspace{10px}
+\begin{observation}
+Si può immaginare la disposizione \textit{senza} ripetizioni come un'estrazione di palline che vengono buttate una volta estratte, mentre la disposizione \textit{con} ripetizioni come un'estrazione di palline che vengono rimesse nel sacchetto una volta estratte.
+\end{observation}
+
+\subsection{Combinazioni}
+Sia \(A\) un insieme di \(n\geq 1\) elementi distinti.
+\newline
+Le combinazioni di \(k\leq n\) elementi, non ripetibili, sono sottoinsiemi di \(A\), che \textit{non} tengono conto dell'ordine.
+
+\vspace{10px}
+Se si denota con \(C_{n,k}\) il numero di combinazioni di classe \(k\) (con \(k\) elementi) senza ripetizioni, si ha:
+\begin{center}
+    \scalebox{1.2}{\(C_{n,k}=\frac{n!}{k!(n-k)!}\)}
+\end{center}
+
+Il risultato ottenuto si evince dal numero di disposizioni di lunghezza k da n elementi possibili (\(D_{n,k}\)), dal quale va \textit{eliminato} l'ordine della sequenza, dividendo per il numero di permutazioni possibli della singola disposizione (\(\Pi_k\)).
+
+\subsection{Combinazioni con ripetizione}
+Sia \(A\) un insieme di \(n\geq 1\) elementi con \(k\in \mathbb{N}^*\). Come per le disposizioni la differenza sta nel poter riavere lo stesso elemento di \(A\) più volte.
+
+\vspace{10px}
+Denotato con \(C'_{n,k}\) il numero di combinazioni di \(n\) elementi di classe \(k\) con ripetizione, si ha:
+\begin{center}
+    \scalebox{1.2}{\(C'_{n,k}=\frac{(n+k-1)!}{k!(n-1)!}\)}
+\end{center}

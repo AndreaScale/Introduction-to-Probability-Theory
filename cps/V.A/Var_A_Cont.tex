@@ -1,0 +1,340 @@
+\section{Variabili aleatori assolutamente continue}
+
+\begin{definition}
+Una $X$ v.a. unidimensionale a valori in $\mathbb{R}$ si dice \textbf{assolutamente continua} se esiste una funzione $f:\mathbb{R}\longrightarrow\mathbb{R}$ tale che $f$ sia integrabile e:
+\[\mathbb{P}(X\leq x)=F_X(x)=\int_{-\infty}^{x} f(t) \,dt \]
+$f$ è detta \textbf{funzione di densità di probabilità}.
+\end{definition}
+
+\vspace{10px}
+
+Si possono subito fare alcune osservazioni sulla natura delle v.a. ass. cont.
+
+\begin{observation}
+\noindent
+\begin{itemize}
+    \item $\mathbb{P}(a<X\leq b)=\mathbb{P}(X\leq b)-\mathbb{P}(X\leq a)=\int_a^b f(t) \, dt$
+    \item $\mathbb{P}(X\in B)=\int_B f(t) \, dt$
+    \item $F_X(x)$ \textit{non} è unica: ad esempio basta prendere $g(x)=f(x)$ $\forall x\neq x_0$ per ottenere un integrale uguale.
+    \item $F_X(x)$ è continua da destra: $F_X(x_0)-\lim_{x\to x_0^-}F_X(x)=\mathbb{P}(X=x_0)=\int_{x_0}^{x_0} f(t) \, dt=0$
+\end{itemize}
+\end{observation}
+
+\vspace{15px}
+
+Due importanti tipi di v.a. ass. cont sono i seguenti:
+\begin{enumerate}
+    \item $X\sim Unif([a,b])$: 
+\begin{center}
+        $F_X(x) = \left\{
+        \begin{array}{ll}
+            0 & \quad x < a \\
+            \frac{x-a}{b-a} & \quad x \in [a,b) \\
+            1 & \quad x \geq b
+        \end{array}\right$
+\end{center}
+Ottenendo dunque:
+\begin{center}
+    $f(x) = \left\{
+        \begin{array}{ll}
+            0 & \quad x \notin (a,b) \\
+            \frac{1}{b-a} & \quad x \in (a,b) 
+        \end{array}
+        \right$
+\end{center}
+Si osserva inoltre che $S=(a,b)$
+
+        \item $X\sim Exp(\lambda)$:
+\begin{center}
+    $f(x) = \left\{
+        \begin{array}{ll}
+            \lambda e^{-\lambda x} & \quad x > 0 \\
+             0 & \quad x \leq 0 
+        \end{array}
+        \right$
+\end{center}
+Ottenendo dunque:
+\begin{center}
+    $F_X(x) = \left\{
+        \begin{array}{ll}
+            1- e^{-\lambda x} & \quad x > 0 \\
+             0 & \quad x \leq 0 
+        \end{array}
+        \right$
+\end{center}
+Dove evidentemente $S=\mathbb{R}_+$
+\end{enumerate}
+
+\vspace{5px}
+
+Riguardo al secondo esempio ($X\sim Exp(\lambda)$) si osserva una propietà equivalente alla perdita di memoria nel caso della v.a. discreta geometrica.
+
+\begin{proposition}
+Sia $X\sim Exp(\lambda)$ e $s,t\in\mathbb{R}_+$ allora vale: \[\mathbb{P}(X>s+t|X>t)=\mathbb{P}(X>s)\]
+\begin{proof}
+$\mathbb{P}(X>t+s|X>t)=$ {\Large $\frac{\mathbb{P}(X>t+s,X>t)}{\mathbb{P}(X>t)}=\frac{\mathbb{P}(X>t+s)}{\mathbb{P}(X>t)}=\frac{1-\mathbb{P}(X\leq s+t)}{1-\mathbb{P}(X\leq t)}$}
+\vspace{5px}
+\newline
+{\Large$\frac{1-(1-e^{-\lambda(t+s)})}{1-(1-e^{-\lambda t})}=\frac{e^{-\lambda(t+s)}}{e^{-\lambda t}}$}
+{\large $=e^{-\lambda s}$} $=\mathbb{P}(X>s)$
+\end{proof}
+\end{proposition}
+
+\subsection{Vettori aleatori assolutamente continue}
+
+Come fatto per le v.a. discrete si osserva un'importante proprietà che lega funzioni borel-misurabili e v.a. continue.
+
+\begin{proposition}
+Sia $X$ una v.a. ass. cont. e $\varphi:\mathbb{R}\longrightarrow\mathbb{R}$ continua e borel-misurabile allora: $Y:=\varphi(X)$ è una v.a. ass. cont. e inoltre:
+\[F_Y(y)=\int_A f_X(t) \,dt\] dove $A=\{t\in\mathbb{R}$ $|$ $t\in\varphi^{-1}((-\infty,y])\}$
+\end{proposition}
+
+
+\begin{definition}
+$\textbf{X}=(X_1,...,X_n)$, $n\in\mathbb{N}^*$ è una \textbf{vettore} aleatorio ass. cont. se la sua funzione di distribuzione (congiunta) di probabilità ammette densità:
+\[F_\textbf{X}(\overline{x})=\mathbb{P}(X_1\leq x_1,...,X_n\leq x_n)=\int_{-\infty}^{x_1}...\int_{-\infty}^{x_n} f_\textbf{X}(t_1,...,t_n) \,dt_1...dt_n\]
+\end{definition}
+
+\vspace{10px}
+
+Sulla falsa riga dei vettori aleatori discreti si enunciano alcune propietà basilari:
+\begin{itemize}
+    \item $\mathbb{P}(\textbf{X}\in B)=\int_B f_{\textbf{X}}(\overline{x}) \,d\overline{x}$
+    \item Marginalizzazione: $f_X(x)=\int_{\mathbb{R}} f_{(X,Y)} \,dy$
+    \item Se X,Y indipendenti: $\mathbb{P}(X\leq x,Y\leq y)=\int_{-\infty}^x f_X(x) \,dx\int_{-\infty}^y f_Y(y) \,dy$
+\end{itemize}
+
+\vspace{10px}
+
+Analogamente al caso discreto si enuncia e dimostra la seguente propietà.
+
+\begin{proposition}
+$(X,Y)$ vettore aleatorio assolutamente continuo con densità $f_{(X,Y)}(x,y)$. La v.a. $Z:=X+Y$ ha densità: \[ f_Z(z) = \int_{-\infty}^{+\infty} f_{(X,Y)}(x,z-x) \, dx \] 
+\vspace{5px}
+\begin{proof}
+\[\mathbb{P}(Z\leq z)=\mathbb{P}(X+Y\leq z)=\int\int_A f(u,v) \, dudv\] 
+\vspace{5px}
+\newline
+dove $A=\{(u,v)\in\mathbb{R}$ $|$ $u+v \leq z\}$. Usando quindi il cambio di coordinate $v=t-u$ , $u=u$ si ottiene:
+\[\int\int_A f(u,v) \, dudv = \int_{-\infty}^z\int_{-\infty}^{+\infty} f(u,t-u) \,dudt = \int_{-\infty}^{z}\bigg(\int_{-\infty}^{+\infty} f(u,t-u) \,du\bigg)dt\]
+Confrontando l'espressione ottenuta con la definizione di $\mathbb{P}(Z\leq z)$ si ottiene la tesi.
+\end{proof}
+\end{proposition}
+
+
+In merito al cambio di variabili di una v.a. ass. cont. si osserva la seguente propietà.
+
+\begin{proposition}
+Sia $\underline{X}$ un v.a. ass. cont. con componenti a valori reali e $g:\mathbb{R}^n\longrightarrow\mathbb{R}^n$ una funzione continua e borel-misurabile. 
+\newline
+Ponendo $\underline{Y}:=g(\underline{X})$ si ottiene:
+\[f_{\underline{Y}}(\overline{y})=f_{\underline{X}}(g^{-1}(\overline{y}))|DetJ_{g^{-1}}(\overline{y})| \]
+\vspace{5px}
+\begin{proof}
+Sia $A\in\mathcal{B}(\mathbb{R})$
+\[\mathbb{P}(\underline{Y}\in A) = \int_A f_{\underline{Y}}(\overline{y}) \,d\overline{y} = \int_{g^{-1}(A)} f_{\underline{X}}(\overline{x}) \,d\overline{x}\]
+Ricordando i teoremi dell'analisi sul cambio di variabile negli integrali multipli e applicando il cambio di variabile $\overline{x}=g^{-1}(\overline{y})$:
+\[\int_{g^{-1}(A)} f_{\underline{X}}(\overline{x}) \,d\overline{x} = \int_{A} f_{\underline{X}}(g^{-1}(\overline{y}))|DetJ_{g^{-1}}(\overline{y})| \,d\overline{y}\]
+Ottenendo la tesi.
+\end{proof}
+\end{proposition}
+
+\vspace{10px}
+
+Un importante uso della propietà appena illustrata si trova, ad esempio, nel seguente esercizio:
+\vspace{5px}
+\newline
+Siano $X,Y$ due v.a. tali che $X\sim Y\sim Exp(\lambda)$ si trovi $f_V(v)$ e $f_U(u)$ dove $U=X$,$V=$ {\large $\frac{X}{Y}$}.
+\vspace{5px}
+\newline
+Per risolvere tale esercizio si può considerare $(U,V)$ come cambio di variabile di $(X,Y)$, trovando $f_{(U,V)}$, per poi marginalizzare.
+
+\newpage
+
+\subsection{Momenti nelle v.a. assolutamente continue}
+
+Rimandando all'analoga trattazione del capitolo \ref{Val_att_discr}.
+\begin{definition}
+$X$ v.a. ass. cont. con densità $f_X$ è integrabile se: \[\int_{-\infty}^{+\infty} |x|f_X(x) \,dx < +\infty\]
+\end{definition}
+
+\vspace{10px}
+
+\begin{definition}
+Se $X$ v.a. ass. cont. a valori reali positivi integrabile si ha:
+\[\E X^+=\int_{-\infty}^{+\infty} xf_X(x) \,dx\]
+\vspace{5px}
+Si definisce: \[\E X = \E X^+ - \E X^-\]
+\end{definition}
+
+
+\vspace{15px}
+
+\begin{observation}
+Se si ha un $\underline{X}$ vettore aleatorio ass. cont. integrabile e $\varphi:\mathbb{R}^n\longrightarrow\mathbb{R}$ una funzione continua e borel-integrabile allora posta $Z=\varphi(\underline{X})$ si ha: 
+\begin{center}
+    $Z$ è integrabile $\Longleftrightarrow \int_{-\infty}^{+\infty} |\varphi(\overline{x})|f_{\underline{X}}(\overline{x}) \,d\overline{x} < +\infty $
+\end{center}
+E si ha: \[\E Z = \int_{-\infty}^{+\infty} \varphi(\overline{x})f_{\underline{X}}(\overline{x}) \,d\overline{x}\]
+\end{observation}
+
+\newpage
+
+\subsection{Esempi notevoli di v.a. assolutamente continue}
+
+\vspace{5px}
+
+Si presentano ora, come fatto per il caso discreto, una serie di variabili aleatorie assolutamente continue di significativa importanza.
+
+\vspace{5px}
+
+
+\begin{itemize}
+    \item \textbf{V.A. Normale} (Gaussiana) \textbf{di parametri 0 e 1} denotata con
+    \newline
+    $Y\sim N(0,1)$:\[ f_Y(y)={ \frac{e^{-\frac{y^2}{2}}}{\sqrt{2\pi}}} \]
+Richiamando i risultati ottenuti nel corso di Analisi 2 si osserva che $f_Y$ integrata su tutto $\mathbb{R}$ da come risultato 1. 
+
+Nel caso tali risultati siano difficili da richiamare si tratta di risolvere il quadrato dell'integrale tramite un passaggio in coordinate polari.
+
+Inoltre notando la positività di $f_Y$ si verifica la natura di densità di probabilità.
+    
+    \vspace{10px}
+    \item \textbf{V.A. Normale di parametri $\mu$ e $\sigma^2$} denotata con $X\sim N(\mu,\sigma^2)$:
+    \vspace{5px}
+    \newline
+    Presa $Y\sim N(0,1)$ si pone $X:=\sigma X + \mu$ ottenendo:
+    \begin{center}
+    $F_X(x)=F_Y\big(${\large $\frac{x-\mu}{\sigma}$}\big)    
+    \end{center}
+    Dunque: 
+    \begin{center}
+        $f_X(x) =$ {\Large $\frac{1}{\sigma\sqrt{2\pi}}$ {\Large $e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ } } 
+    \end{center}
+    Inoltre tramite le propietà del valore atteso e della varianza, calcolando $\E Y$ e $\V Y$, si ottiene:
+    \begin{itemize}
+        \item $\E X = \mu$
+        \item $\V X = \sigma^2$
+    \end{itemize}
+    
+    
+    \newcommand{\intt}{\int_{-\infty}^{+\infty}}
+    
+    Calcoliamo ora la funzione generatrice dei momenti di una v.a. normale:
+    
+    \[\phi_X(t) = e^{(\mu+\frac{\sigma^2t^2}{2})}\]
+    
+    Poichè:
+    
+    \[\phi_X(t)=\E e^{tX}=\int_{-\infty}^{+\infty}e^{tx} \frac{{\Huge e^ \frac{-(x-\mu)^2}{2\sigma^2}}}{\sigma \sqrt{2\pi}}  \,dx =\]
+    \[ \frac{1}{\sigma\sqrt{2\pi}}\intt e^{\frac{-(x^2+\mu^2-2x\mu-2tx\sigma^2+2\mu\sigma^2t+\sigma^4t^2)}{2\sigma^2}} \cdot e^{\frac{(2\mu\sigma^2t+\sigma^4t^2)}{2\sigma^2}} \,dx =\]
+    \[\frac{e^{(\mu+\frac{\sigma^2t^2}{2})}}{\sqrt{2\pi}} \intt e^{\frac{-\big(y-\frac{(\mu-\sigma^2t)}{\sigma}\big)^2}{2}} \,dy = \frac{e^{(\mu+\frac{\sigma^2t^2}{2})}}{\sqrt{2\pi}} \intt e^{\frac{-z^2}{2}} \,dz = e^{(\mu+\frac{\sigma^2t^2}{2})} \] 
+    
+    \vspace{10px}
+    \newpage
+    Grazie alla caratterizzazione data dalla f.g.m. possiamo valutare la v.a. $Z=X+Y$ dove $X\sim N(\mu_1,\sigma_1^2), Y\sim N(\mu_2, \sigma_2^2)$:
+    
+    \[\E e^{t(X+Y)}=\E e^{tX}\E e^{tY}=e^{(\mu_1+\frac{\sigma_1^2t^2}{2})}e^{(\mu_2+\frac{\sigma_2^2t^2}{2})}=e^{(\mu_1+\mu_2)+\frac{(\sigma_1^2+\sigma_2^2)t^2}{2}}\]
+    
+    Ottendendo che $Z\sim N(\mu_1+\mu_1,\sigma_1^2+\sigma_2^2)$
+    
+    \vspace{10px}
+    \item \textbf{V.A. Gamma ($\Gamma$)} denotata con $X\sim Ga(\alpha,\lambda)=\Gamma(\alpha,\lambda)$:
+    \vspace{5px}
+    \newline
+    Si richiama:
+    \begin{align*}
+        \Gamma\colon \mathbb{R_+} & \longrightarrow \mathbb{R_+} \\
+        \alpha& \longmapsto \int_0^{+\infty} x^{\alpha-1}e^{-x} \,dx
+    \end{align*}
+    
+    Dunque di definisce, ponendo $\alpha>0$,$\lambda>0$: $x>0$ \[f_X(x) = \frac{\lambda^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x} \hspace{3px}\]
+
+     Si nota subito che: $\Gamma(1,\lambda)\sim Exp(\lambda)$
+     
+     \vspace{5px}
+     
+     Si dice che $X\sim \Gamma(\frac{n}{2},\frac{1}{2})$ si distribuisce come un \textbf{chi-quadro} ($\chi^2$) con $n$ gradi di libertà.
+     
+     \vspace{5px}
+     
+     Osserviamo ora due imprtanti proprietà della v.a. gamma e chi-quadro.
+     
+     \begin{proposition}
+     $Z\sim N(0,1)$ allora $Y=Z^2\sim \chi_1^2$
+     \begin{proof}
+     Ricordiamo che per $X\sim\chi_1^2$ si ha: $f_X(x)=\frac{x^{-\frac{1}{2}}e^{-\frac{1}{2}x}}{2^{\frac{1}{2}}\Gamma(\frac{1}{2})}=\frac{1}{\sqrt{2\pi x}}e^{-\frac{1}{2}x}$
+     Dunque: \[\mathbb{P}(Y\leq y)=\mathbb{P}(Z^2\leq y)=\mathbb{P}(-\sqrt{y}\leq Z\leq\sqrt{y})=F_Z(\sqrt{y})-F_Z(-\sqrt{y})\]
+     Ottenendo: \[f_Y(y)=\frac{d}{dy}\Big(F_Z(\sqrt{y})-F_Z(-\sqrt{y})\Big)=\frac{1}{2\sqrt{y}}\big(2f_Z(\sqrt{y})\big)=\frac{1}{\sqrt{y}}\frac{1}{\sqrt{2\pi}}e^{-\frac{y}{2}}\]
+     \end{proof}
+     \end{proposition}
+     
+     \begin{observation}
+     Si ricordano:
+     \begin{itemize}
+         \item $X\sim Bin(n,\theta)\longrightarrow m_X(t)=[\theta e^t+(1-\theta)]^n$
+         \item $X\sim \Gamma(\theta_1,\theta_2)\longrightarrow m_X(t)=\Big(${\large $\frac{\theta_2}{\theta_2-t}$}$\Big)^{\theta_1}$
+         \item $X\sim N(\theta_1,\theta_2)\longrightarrow m_X(t)=exp(\theta_1t+\theta_2\frac{t^2}{2})$
+         \item $X\sim \Gamma(\frac{p}{2},\frac{1}{2})\longrightarrow m_X(t)=(1-2t)^{\frac{p}{2}}$
+     \end{itemize}
+     \end{observation}
+     
+     \vspace{15px}
+     
+     \begin{proposition}
+     Siano $Y_1,...,Y_n$ v.a. ind. t.c. $Y_i\sim\chi_{p_i}^2$ per $i=1,...,n$ allora si ha che $\sum\limits_{i=1}^nY_i\sim\chi_p^2$ dove $p=\sum\limits_{i=1}^np_i$
+    \begin{proof}
+    Basta osservare la f.g.m chiamando $Y=\sum\limits_{i=1}^nY_i$: \[m_{Y_i}(t)=(1-2t)^{\frac{p_i}{2}} \Rightarrow m_Y(t)=\prod_{i=1}^nm_{Y_i}(t)=\prod_{i=1}^n(1-2t)^{\frac{p_i}{2}}=(1-2t)^p\]
+    \end{proof}
+     \end{proposition}
+     
+     \vspace{10px}
+     
+     \newcommand{\Aa}{\alpha}
+    \newcommand{\Bb}{\beta} 
+     -Studiamo ora i momenti della v.a. $X\sim\Gamma(\alpha,\lambda)$:
+     
+     \[\E X^{\beta} = \int_0^{+\infty} x^{\beta}\frac{\lambda^{\Aa}}{\Gamma(\Aa)}x^{\Aa-1}e^{-\lambda x} \,dx = \frac{\lambda^{\Aa}}{\Gamma(\Aa)}\int_0^{+\infty}\Big(\frac{y}{\lambda}\Big)^{\Aa+\Bb-1}e^{-y}\frac{1}{y} \,dy\] 
+     \[=\frac{\lambda^{-\Bb}}{\Gamma(\Aa)}\int_0^{+\infty}y^{\Aa+\Bb-1}e^{-y} \,dy = \frac{\Gamma(\Aa+\Bb)}{\lambda^{\Bb}\Gamma(\Aa)}\]
+     Dunque:
+     \begin{itemize}
+         \item $\E X=${\large $\frac{\Aa}{\lambda}$}
+         \item $\E X^2=${\large $\frac{\Aa(\Aa+1)}{\lambda^2}$}
+     \end{itemize}
+     Ottenendo: \[\V X=\frac{\Aa}{\lambda^2}\]
+     \vspace{10px}
+     \item \textbf{V.A. T di student} con $p$ gradi di libertà, denotata con $T\sim t_p$:
+     \newline
+     Ha funzione di densità: \[f_T(t)=\frac{\Gamma(\frac{p+1}{2})}{\Gamma(\frac{p}{2})}\frac{1}{\sqrt{p\pi}}\frac{1}{(1+\frac{t^2}{p})^{\frac{p+1}{2}}}\]
+     Prima fondamentale caratteristica è che: $T$ $non$ ha f.g.m.
+
+     $T\sim t_1$ è detta di Cauchy.
+     
+     Un importante teorema che lega distribuzione normale e  chi-quadro alla student è il seguente.
+     \begin{theorem}
+     Siano $U\sim N(0,1)$ e $V\sim\chi_p^2$ allora $T=\frac{U}{\sqrt{\frac{V}{p}}}\sim t_p$
+     \begin{proof}
+     Per dimostrale l'asserto si applichi il cambiamento di variabili \newline $\varphi(u,v)=(\frac{u}{\sqrt{\frac{v}{p}}},v)$. 
+     
+     Quindi si razionalizzi rispetto alla prima componente e si risolva l'integrale ricoduncendo l'integrando alla funzione di densità di una \newline $\Gamma((p+1)/2,\frac{1}{2}(1+t^2/p))$.
+     \end{proof}
+     \end{theorem}
+     
+     \vspace{10px}
+     \item \textbf{V.A. F di Fisher} con gradi di libertà $(p,q)$, denotata con $W\sim F_{p,q}$:
+     
+     Ha una funzione di densità: \[f_F(f)=\frac{\Gamma(\frac{p+q}{2})}{\Gamma(\frac{p}{2})\Gamma(\frac{q}{2})}\bigg(\frac{p}{q}\bigg)^{\frac{p}{2}}\frac{\omega^{\frac{p}{2}-1}}{\Big[1+\big(\frac{p}{q}\big)\omega\Big]^{\frac{p+q}{2}}}\]
+     
+     Prima importante caratterizzazione si ha con: $T\sim t_p \Rightarrow T^2\sim F_{1,q}$
+     
+     Un'altra caratterizzazione la si ha tramite il seguente teorema.
+     \begin{theorem}
+     Siano $U\sim\chi_p^2$ e $V\sim\chi_q^2$ allora $W=\frac{\frac{U}{p}}{\frac{V}{q}}\sim F_{p,q}$
+     \end{theorem}
+     \begin{proof}
+     Per dimostrale l'asserto si applichi il cambiamento di variabili \newline
+     $\varphi(u,v)=(\frac{u/p}{v/q},v/q)$
+     Quindi si razionalizzi rispetto alla prima componente e si risolva l'integrale tramite $t=x(pw+q)$ e ricoduncendo l'integrando alla funzione di densità di un $\chi_{\frac{p+q}{2}}$.
+     \end{proof}
+\end{itemize}
+

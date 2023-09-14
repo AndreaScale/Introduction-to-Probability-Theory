@@ -1,0 +1,57 @@
+\section{Funzione caratteristica}
+
+\begin{definition}
+Date $Z_1,Z_2$ v.a. a vaori reali allora $Z=Z_1+iZ_2$ è una v.a. definita sullo stesso spazio probabilistico detta a \textbf{valori complessi}.
+\end{definition}
+
+\vspace{5px}
+
+\begin{observation}
+Se $Z_1$ e $Z_2$ sono integrabili lo è anche $Z$ e vale: \[\E Z=\E Z_1 +i\E Z_2\]
+\end{observation}
+
+\vspace{10px}
+
+Possiamo dunque definire la funzione caratteristica.
+\begin{definition}
+Sia $\textbf{X}$ una v.a. a valori reali in $\mathbb{R}^d$ si dice \textbf{funzione caratteristica di \textbf{X}} la: 
+\begin{align*}
+    \varphi\colon \mathbb{R}^d & \longrightarrow \mathbb{C} \\
+    \theta&\mapsto \E e^{i\langle\theta,\textbf{X}\rangle} = \E cos(\langle\theta,\textbf{X}\rangle) + i\E sin(\langle\theta,\textbf{X}\rangle)
+\end{align*}
+\end{definition}
+
+\vspace{5px}
+
+Una serie di basilari osservazioni:
+\begin{itemize}
+    \item $\varphi(0)=1$
+    \item $X$ discreta: \[\varphi(\theta)=\sum_k e^{i(\theta\cdot k)}\mathbb{P}(X=k)\]
+    \item $X$ ass. cont: \[\varphi(\theta)=\int_{\mathbb{R}^d}e^{i(\theta\cdot \textbf{x})}f_\textbf{X}(\textbf{x}) \,d\textbf{x}\]
+\end{itemize}
+
+\vspace{15px}
+
+Di fondamentale importanza il seguente.
+
+\begin{theorem}
+Siano $X,Y$ v.a:
+\begin{center}
+    $X,Y$ identicamente distribuite $\Longleftrightarrow$ $X,Y$ hanno la stessa funzione caratteristica
+\end{center}
+\end{theorem}
+
+\vspace{10px}
+\newcommand{\Tt}{\theta}
+
+Enunciamo (la dimotrazione è lasciata come esercizio) brevemente due propietà:
+\begin{enumerate}
+    \item $X,Y$ ind. $\Rightarrow$ $\varphi_{X+Y}(\theta)=\varphi_X(\Tt)\varphi_Y(\Tt)$
+    \item $Y=AX+b$ allora: $\varphi_Y(\Tt)=e^{i\Tt\cdot b}\varphi_{X}(A^t\Tt)$
+\end{enumerate}
+
+\vspace{5px}
+
+In analogia con la f.g.m si osserva la seguente propietà che lega i momenti e la funzione caratteristica:
+\[\E X^k = \frac{1}{i^k}\frac{d^k}{d\Tt^k}\varphi_X(\Tt)|_{\Tt=0}\]
+Per ricarvale questo risultato si procede analogamente alla f.g.m., cioè usando l'espansione di Taylor in un intorno di $0$.

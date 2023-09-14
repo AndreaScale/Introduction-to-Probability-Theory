@@ -1,0 +1,141 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{subfiles}
+\usepackage{graphicx}
+\usepackage[scr]{rsfso}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{array,amsfonts}
+\usepackage{magaz}
+\usepackage{amssymb}
+\usepackage[shortlabels]{enumitem}
+\usepackage{lipsum}
+\usepackage[dottedtoc]{classicthesis}
+\usepackage{tocloft}
+\usepackage{cancel}
+
+%-----------------------------------------------------------------------------------------------
+\def\@tocline#1#2#3#4#5#6#7{\relax
+  \ifnum #1>\c@tocdepth % then omit
+  \else
+    \par \addpenalty\@secpenalty\addvspace{#2}%
+    \begingroup \hyphenpenalty\@M
+    \@ifempty{#4}{%
+      \@tempdima\csname r@tocindent\number#1\endcsname\relax
+    }{%
+      \@tempdima#4\relax
+    }%
+    \parindent\z@ \leftskip#3\relax \advance\leftskip\@tempdima\relax
+    \rightskip\@pnumwidth plus4em \parfillskip-\@pnumwidth
+    #5\leavevmode\hskip-\@tempdima #6\nobreak\relax
+    \dotfill\hbox to\@pnumwidth{\@tocpagenum{#7}}\par
+    \nobreak
+    \endgroup
+  \fi}
+  
+\newcommand\myfunc[5]{%
+  \begingroup
+  \setlength\arraycolsep{0pt}
+  #1\colon\begin{array}[t]{c >{{}}c<{{}} c}
+             #2 & \to & #3 \\ #4 & \to & #5 
+          \end{array}%
+  \endgroup}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{proposition}
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{observation}{Observation}[section]
+\usepackage{tocloft}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+
+
+
+
+\begin{document}
+
+\title{Appunti Calcolo delle Probabilità e Statistica}
+\author{Andrea Scalenghe}
+\date{Febbraio2021}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+\pdfbookmark[1]{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{2} % <-- 2 includes up to subsections in the ToC
+\setcounter{secnumdepth}{3} % <-- 3 numbers up to subsubsections
+\manualmark
+\markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
+\tableofcontents
+\automark[section]{chapter}
+\renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace\spacedlowsmallcaps{#1}}}
+\newpage
+\part{Probabilità}
+\chapter{Elementi fondamentali di probabilità}
+\input{Intro_prob/intro}
+\newpage
+\input{Intro_prob/Cal_comb}
+\newpage
+\input{Def_prob/Costruz_assiom}
+\newpage    
+\input{Def_prob/Cont_P}
+\newpage
+\input{Def_prob/Ind_Dip_Con}
+\newpage
+\chapter{Variabili aleatorie}
+\input{V.A./Var_A}
+\newpage
+\input{V.A./Var_A_Discr}
+\newpage
+\input{V.A./Val_Att}
+
+\input{V.A./Mom_Var_Cov}
+
+\input{V.A./Disug}
+\newpage
+\input{V.A./Var_A_Cont}
+\newpage
+\input{V.A./Funz_Car}
+\newpage
+\input{V.A./Conv_LimCentr}
+\part{Statistica}
+\chapter{Definizioni}
+\input{Intro_stat/Def}
+\newpage
+\chapter{Metodi inferenziali}
+\input{Intro_stat/Stimat}
+\newpage
+\input{Intro_stat/UMVUE}
+\newpage
+\input{Intro_stat/Stim_asin}
+\newpage
+\input{Intro_stat/Stima_interv}
+\newpage
+\input{Intro_stat/Test_ip}
+
+\newpage
+
+\setcounter{secnumdepth}{-1}
+    \myChapter{Conclusioni}
+
+
+Si concludono qui le lezioni, e dunque i miei appunti, del corso di \textit{Calcolo delle probabilità e statistica} dell'anno accademico 2020/2021. 
+
+Questi sono i primi e si spera non ultimi appunti che scrivo in {\LaTeX}. Sono felice di averli fatti, anche se hanno richiesto un buon numero di ore di lavoro. Sono molto scarni di commenti, esempi e spiegazioni più discorsive. Principalmente perchè non avevo voglia di farle, e in secondo luogo, ma neanche tanto secondo, perchè non le so fare. Tutto ciò che viene spiegato in queste pagine è stato infatti appoggiato dalla lettura dei due libri di riferimento per il corso, il Casella-Berger e il Grimmett-Stirzaker, ed è a loro che rimando per una comprensione più approfondita della materia.
+
+Spero queste note siano state utili a chiunque ne sia in possesso e mi auguro possiate superare l'esame con un bel 29, non 30 che poi magari pensate anche di essere bravi. 
+
+Un affettuoso saluto,
+
+\vspace{5px}
+\noindent
+Andrea Scalenghe.
+\end{document}

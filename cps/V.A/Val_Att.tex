@@ -1,0 +1,90 @@
+\section{Valore atteso} \label{Val_att_discr}
+
+\begin{definition}
+Sia $X$ una variabile aleatoria (discreta) quasi certamente positiva \big($\mathbb{P}(X\geq0)=1$\big), si dice che $X$ è \textbf{integrabile} se:
+\[\sum\limits_{i=0}^{+\infty}x_i\mathbb{P}(X=x_i) < +\infty\]
+Se poi $X$ è integrabile allora di definisce \textbf{valore atteso} come:
+    \[\mathbb{E}X=\sum\limits_{i=0}^{+\infty}x_i\mathbb{P}(X=x_i)\]
+\end{definition}
+
+\vspace{10px}
+
+Per estendere la definizione a una V.A. generica mi servo di: \newline
+$X^{+}=max(X,0)$ e $X^{-}=min(X,0)$. Entrabe V.A. a valori positivi.
+
+\vspace{10px}
+
+\begin{definition}
+Sia $X$ una V.A. discreta a valori reali allora:
+    \[\mathbb{E}X=\mathbb{E}X^+-\mathbb{E}X^-\]
+\end{definition}
+\vspace{5px}
+Si osserva immediatamente che: $\mathbb{E}|X|=\sum\limits_{i=0}^{+\infty}|x_i|\mathbb{P}(X=x_i)$.
+
+Iniziali e fondamentali caratterizzazioni del valore atteso sono date dai seguenti teoremi.
+
+\begin{theorem}
+Sia $Z$ una V.A. discreta del tipo $$Z=f(X_1,...,X_n)$$ dove $f:\mathbb{R}^n\longrightarrow\mathbb{R}$ è borel-misurabile e $(X_1,...,X_n)$ è vettore aleatorio, allora:
+\begin{center}
+    \begin{enumerate}
+        \item Se $\sum\limits_{i=0}^{+\infty}|f(x_1^i,...,x_n^i)|\mathbb{P}(X_1=x_1^i,...,X_n=x_n^i)<+\infty$ dove $S=\{(x_1^i,...,x_n^i)\}_{i=0}^{+\infty}$ allora $Z$ è integrabile
+        \item $\mathbb{E}Z=\sum\limits_{i=0}^{+\infty}f(x_1^i,...,x_n^i)\mathbb{P}(X_1=x_1^i,...,X_n=x_n^i)$
+    \end{enumerate}
+\end{center}
+\begin{proof}
+$1.$ Considero $A_j=\{(x_1^i,...,x_n^i)$ $|$ $f(x_1^i,...,x_n^i)=z_j\}=f^{-1}(z_j)$
+\vspace{5px}
+\newline
+Posso riscrivere dunque: \[\{Z=z_j\}=\{\omega\in\Omega | Z(\omega)=z_j\}=\bigcup\limits_{\underline{x}\in A_j}\{X_1=x_1,...,X_n=x_n\}\]
+\vspace{5px}
+\newline
+Ottenendo: $\mathbb{P}(\{Z=z_j\})=\sum\limits_{\underline{x}\in A_j}\mathbb{P}(X_1=x_1,...,X_n=x_n)$
+\newline
+Dunque:
+\[\sum\limits_{j=0}^{+\infty}|z_j|\mathbb{P}(Z=z_j)=
+\sum\limits_{j=0}^{+\infty}\sum\limits_{\underline{x}\in A_j}|f(x_1^i,...,x_n^i)| \mathbb{P}(X_1=x_1,...,X_n=x_n)=\]
+\[\sum\limits_{i=0}^{+\infty}|f(x_1^i,...,x_n^i)| \mathbb{P}(X_1=x_1^i,...,X_n=x_n^i)\]
+\vspace{10px}
+\newline
+\noindent
+$2.$ Equivalente a prima.
+\end{proof}
+\end{theorem}
+
+\newpage
+Il secondo e il terzo teorema definiscono la natura di $\mathbb{E}$.
+\begin{theorem}
+$\mathbb{E}$ è un operatore lineare.
+\begin{proof}
+Basta applicare il teorema precedente a $(X,Y)$ con $f(X,Y)=aX+bY$. Ricordarsi di valutare l'integrabilità di $aX+bY$.
+\end{proof}
+\end{theorem}
+
+\begin{theorem}
+$X,Y$ V.A. unidimensionali a valori reali itegrabili: 
+\begin{enumerate}
+    \item $\mathbb{P}(X\geq Y)=1 \Rightarrow \mathbb{E}X\geq\mathbb{E}Y$
+    \item $|\mathbb{E}X|\leq\mathbb{E}|X|$
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}
+    \item Pongo $Z=X-Y$. Osservo che: \[\mathbb{P}(X\geq Y) = 1 \Leftrightarrow \mathbb{P}(Z\geq 0) = 1\]
+    Dunque il supporto di $Z$ sarà contenuto nei reali \textit{positivi}. Dunque $\mathbb{E}Z\geq 0$ implica $\mathbb{E}X\geq\mathbb{E}Y$
+    \item Per monotonia e $-|X|\geq X\geq|X|$ si ottiene: $-\mathbb{E}|X|\geq \mathbb{E}X\geq\mathbb{E}|X|$
+\end{enumerate}
+
+\vspace{5px}
+\noindent
+\end{proof}
+\end{theorem}
+
+Si riportano di seguito 3 importanti proprietà del valore atteso, la cui dimostrazione è banale e lasciata al lettore ( ;) ).
+
+\begin{proposition}
+Siano $X,Y$ v.a. discrete a valori reali:
+\begin{enumerate}
+    \item Se $X$ è limitata allora è integrabile
+    \item $|X|\leq|Y|$ q.c. allora: $Y$ integrabile $\Rightarrow$ $X$ integrabile
+    \item Se $X,Y$ integrabili e \textit{indipendenti} allora $XY$ è integrabile e $\mathbb{E}XY=\mathbb{E}X\mathbb{E}Y$ 
+\end{enumerate}
+\end{proposition}
